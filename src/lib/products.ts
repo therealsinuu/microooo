@@ -84,7 +84,7 @@ export const products: Product[] = [
       "Collect votes — users upvote the features they want",
       "Ship & announce — move items through your roadmap and publish changelogs",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://echoboard.microooo.com",
   },
   {
     id: "socialpull",
@@ -120,7 +120,7 @@ export const products: Product[] = [
       "Design your wall — pick a layout and customize the look",
       "Embed anywhere — drop the widget into your site or display",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://socialpull.microooo.com",
   },
   {
     id: "firststep",
@@ -156,7 +156,7 @@ export const products: Product[] = [
       "Set triggers — who sees it and when",
       "Launch and measure — track completion and drop-off",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://firststep.microooo.com",
   },
   {
     id: "screencast",
@@ -192,7 +192,7 @@ export const products: Product[] = [
       "Schedule playlists — set what plays when",
       "Manage remotely — update content from anywhere",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://screencast.microooo.com",
   },
   {
     id: "ogsnap",
@@ -228,7 +228,7 @@ export const products: Product[] = [
       "Generate — use the API or dashboard",
       "Deploy — images are cached on our CDN globally",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://ogsnap.microooo.com",
   },
   {
     id: "legalkit",
@@ -264,7 +264,7 @@ export const products: Product[] = [
       "Publish — embed on your site or use our hosted page",
       "Stay updated — we notify you when laws change",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://legalkit.microooo.com",
   },
   {
     id: "snapshot",
@@ -300,7 +300,7 @@ export const products: Product[] = [
       "Get the image — PNG, JPEG, or PDF returned",
       "Scale it — process thousands of screenshots per hour",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://snapshot.microooo.com",
   },
   {
     id: "topbar",
@@ -336,7 +336,7 @@ export const products: Product[] = [
       "Install — one script tag on your site",
       "Track results — see clicks, conversions, dismissals",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://topbar.microooo.com",
   },
   {
     id: "signmail",
@@ -372,7 +372,7 @@ export const products: Product[] = [
       "Install — one-click install for Gmail, Outlook, etc.",
       "Manage — update everyone's signature from one dashboard",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://signmail.microooo.com",
   },
   {
     id: "pingbadge",
@@ -408,7 +408,7 @@ export const products: Product[] = [
       "Get alerted — email, Slack, or SMS when something's down",
       "Show the badge — embed your uptime badge on your site",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://pingbadge.microooo.com",
   },
   {
     id: "favicon",
@@ -444,7 +444,7 @@ export const products: Product[] = [
       "Download — get the complete favicon package",
       "Install — copy the HTML snippet to your site",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://favicon.microooo.com",
   },
   {
     id: "golink",
@@ -480,7 +480,7 @@ export const products: Product[] = [
       "Deploy instantly — redirects go live immediately",
       "Track performance — see clicks, sources, and conversions",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://golink.microooo.com",
   },
   {
     id: "pricecard",
@@ -516,7 +516,7 @@ export const products: Product[] = [
       "Customize the look — match your brand",
       "Embed or host — drop it on your site or use our page",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://pricecard.microooo.com",
   },
   {
     id: "pausepage",
@@ -552,7 +552,7 @@ export const products: Product[] = [
       "Configure access — whitelist your team's IPs",
       "Go live — your maintenance page handles the rest",
     ],
-    appUrl: "https://groupcheers.microooo.com",
+    appUrl: "https://pausepage.microooo.com",
   },
 ];
 
