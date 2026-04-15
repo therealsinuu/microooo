@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu } from "lucide-react";
-import { products, productCategories } from "@/lib/products";
+import { products } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -53,62 +53,25 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                 <NavigationMenuContent className="w-[600px]">
-                  <div className="grid grid-cols-2 gap-4 p-4">
-                    {/* Products column */}
-                    <div>
-                      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        Products
-                      </h4>
-                      <ul className="space-y-0.5">
-                        {productCategories.products.map((product) => (
-                          <li key={product.id}>
-                            <NavigationMenuLink
-                              render={
-                                <a href={product.appUrl} />
-                              }
-                            >
-                              <span className="text-base">{product.icon}</span>
-                              <div>
-                                <div className="text-sm font-medium">
-                                  {product.name}
-                                </div>
-                                <div className="text-xs text-muted-foreground line-clamp-1">
-                                  {product.tagline}
-                                </div>
-                              </div>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Micro SaaS column */}
-                    <div>
-                      <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        Micro SaaS
-                      </h4>
-                      <ul className="space-y-0.5">
-                        {productCategories.microsaas.map((product) => (
-                          <li key={product.id}>
-                            <NavigationMenuLink
-                              render={
-                                <a href={product.appUrl} />
-                              }
-                            >
-                              <span className="text-base">{product.icon}</span>
-                              <div>
-                                <div className="text-sm font-medium">
-                                  {product.name}
-                                </div>
-                                <div className="text-xs text-muted-foreground line-clamp-1">
-                                  {product.tagline}
-                                </div>
-                              </div>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="grid grid-cols-3 gap-1 p-4">
+                    {products.map((product) => (
+                      <NavigationMenuLink
+                        key={product.id}
+                        render={
+                          <a href={product.appUrl} />
+                        }
+                      >
+                        <span className="text-base">{product.icon}</span>
+                        <div>
+                          <div className="text-sm font-medium">
+                            {product.name}
+                          </div>
+                          <div className="text-xs text-muted-foreground line-clamp-1">
+                            {product.tagline}
+                          </div>
+                        </div>
+                      </NavigationMenuLink>
+                    ))}
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -178,31 +141,7 @@ export function Navbar() {
                     Products
                   </h4>
                   <ul className="space-y-1">
-                    {productCategories.products.map((product) => (
-                      <li key={product.id}>
-                        <SheetClose
-                          render={
-                            <a
-                              href={product.appUrl}
-                              className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
-                            />
-                          }
-                        >
-                          <span>{product.icon}</span>
-                          <span>{product.name}</span>
-                        </SheetClose>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Micro SaaS section */}
-                <div>
-                  <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                    Micro SaaS
-                  </h4>
-                  <ul className="space-y-1">
-                    {productCategories.microsaas.map((product) => (
+                    {products.map((product) => (
                       <li key={product.id}>
                         <SheetClose
                           render={

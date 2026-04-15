@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   tagline: string;
   description: string;
-  category: "product" | "microsaas";
+  category: "product";
   color: string;
   bgColor: string;
   icon: string;
@@ -200,7 +200,7 @@ export const products: Product[] = [
     tagline: "Beautiful OG images. Zero design work.",
     description:
       "Generate stunning Open Graph images for your website, blog posts, and social shares automatically. Pick a template, connect your content, and every page gets a perfect preview image when shared on social media.",
-    category: "microsaas",
+    category: "product",
     color: "text-indigo-600",
     bgColor: "bg-indigo-500/10",
     icon: "🖼️",
@@ -236,7 +236,7 @@ export const products: Product[] = [
     tagline: "Legal pages in 60 seconds.",
     description:
       "Generate professional privacy policies, terms of service, cookie policies, and GDPR compliance pages for your website. Answer a few questions and get legally-sound pages ready to publish. Stay compliant without hiring a lawyer.",
-    category: "microsaas",
+    category: "product",
     color: "text-amber-600",
     bgColor: "bg-amber-500/10",
     icon: "⚖️",
@@ -272,7 +272,7 @@ export const products: Product[] = [
     tagline: "Screenshot any URL. Instantly.",
     description:
       "A powerful screenshot API that captures any webpage as a high-quality image. Perfect for generating thumbnails, building preview cards, monitoring visual changes, and automating screenshot workflows.",
-    category: "microsaas",
+    category: "product",
     color: "text-cyan-600",
     bgColor: "bg-cyan-500/10",
     icon: "📸",
@@ -344,7 +344,7 @@ export const products: Product[] = [
     tagline: "Professional email signatures. Instantly.",
     description:
       "Create beautiful, consistent email signatures for your entire team. Design once, deploy everywhere. Works with Gmail, Outlook, Apple Mail, and more. Include social links, banners, and call-to-action buttons.",
-    category: "microsaas",
+    category: "product",
     color: "text-violet-600",
     bgColor: "bg-violet-500/10",
     icon: "✉️",
@@ -380,7 +380,7 @@ export const products: Product[] = [
     tagline: "Show your uptime. Build trust.",
     description:
       "Monitor your website's uptime and display beautiful status badges on your site. Show visitors your reliability with real-time uptime percentages, response times, and incident history. Build trust through transparency.",
-    category: "microsaas",
+    category: "product",
     color: "text-emerald-600",
     bgColor: "bg-emerald-500/10",
     icon: "🟢",
@@ -416,7 +416,7 @@ export const products: Product[] = [
     tagline: "Perfect favicons. Every browser.",
     description:
       "Generate all the favicon sizes and formats you need from a single image. Get ICO, PNG, SVG, Apple Touch Icon, and web manifest files — everything your site needs to look perfect in every browser and device.",
-    category: "microsaas",
+    category: "product",
     color: "text-sky-600",
     bgColor: "bg-sky-500/10",
     icon: "🎯",
@@ -488,7 +488,7 @@ export const products: Product[] = [
     tagline: "Pricing pages that convert.",
     description:
       "Build beautiful, high-converting pricing pages without design skills. Choose from proven templates, customize your plans, and embed on your site. A/B test different layouts and pricing strategies to maximize conversions.",
-    category: "microsaas",
+    category: "product",
     color: "text-lime-600",
     bgColor: "bg-lime-500/10",
     icon: "💰",
@@ -524,7 +524,7 @@ export const products: Product[] = [
     tagline: "Beautiful downtime pages.",
     description:
       "Create professional maintenance and coming-soon pages that keep your visitors informed and your brand looking good — even when your site is down. Set up automatic scheduling so your maintenance page appears and disappears on time.",
-    category: "microsaas",
+    category: "product",
     color: "text-stone-600",
     bgColor: "bg-stone-500/10",
     icon: "⏸️",
