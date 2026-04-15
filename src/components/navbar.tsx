@@ -29,12 +29,12 @@ export function Navbar() {
     <>
     <div className="w-full bg-primary text-primary-foreground">
       <div className="mx-auto flex h-10 max-w-7xl items-center justify-center gap-2 px-4 sm:px-6 lg:px-8 text-sm">
-        <span className="font-medium">🚀 15 micro-SaaS tools. One subscription. Start free today.</span>
+        <span className="font-medium">Explore our collection of products. Built by Sinan.</span>
         <a
-          href="https://groupcheers.microooo.com/signup"
+          href="/products"
           className="underline underline-offset-2 font-semibold hover:opacity-80 transition-opacity"
         >
-          Get started →
+          See all products →
         </a>
       </div>
     </div>

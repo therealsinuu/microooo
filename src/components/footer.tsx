@@ -60,9 +60,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              All your micro-SaaS tools.
+              A collection of standalone
               <br />
-              One subscription.
+              products built by Sinan.
             </p>
           </div>
 

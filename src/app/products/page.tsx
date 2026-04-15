@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 export const metadata = {
   title: "All Products | microooo",
   description:
-    "Explore 15 micro-SaaS products built to solve real problems. From group greeting cards to uptime badges, find the perfect tool for your workflow.",
+    "Explore standalone micro-SaaS products built to solve real problems. From group greeting cards to uptime badges, find the perfect tool for your workflow.",
 };
 
 function ProductCard({

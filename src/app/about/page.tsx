@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 const stats = [
-  { label: "Products", value: "15", icon: Package },
+  { label: "Products", value: "7", icon: Package },
   { label: "Users", value: "2,000+", icon: Users },
   { label: "Uptime", value: "99.9%", icon: Activity },
 ];
@@ -34,7 +34,7 @@ const values = [
   {
     title: "Affordability",
     description:
-      "Small teams shouldn't have to choose between tools. One subscription gets you everything, at a fraction of what individual SaaS products cost.",
+      "Small teams shouldn't have to choose between tools. Each product is priced fairly, so you only pay for what you actually use.",
     icon: Heart,
   },
   {
@@ -55,15 +55,16 @@ export default function AboutPage() {
             Built by Sinan
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            I&apos;m an indie builder who got tired of paying for 10 different SaaS
-            subscriptions just to run a small project. So I started building the
-            tools I needed myself — simple, focused micro-SaaS products that do
-            one thing well. Then I thought: why not bundle them all together?
+            I&apos;m an indie builder who loves creating simple, focused
+            micro-SaaS products that do one thing well. Each product I build
+            is standalone — its own login, its own subscription, its own
+            purpose.
           </p>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            That&apos;s how microooo was born. One subscription, 15 tools, built
-            for people like me — founders, freelancers, and small teams who want
-            great software without the enterprise price tag.
+            That&apos;s how microooo was born. A portfolio of independent
+            products, built for people like me — founders, freelancers, and
+            small teams who want great software without the enterprise price
+            tag.
           </p>
         </div>
       </section>
@@ -77,13 +78,12 @@ export default function AboutPage() {
             Our Mission
           </p>
           <h2 className="mt-3 text-3xl font-bold text-foreground">
-            Simplify the SaaS stack for small teams
+            Build focused tools that solve real problems
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Small teams are forced to stitch together dozens of tools, each with
-            its own login, billing, and learning curve. We believe there&apos;s a
-            better way: a single platform with every essential tool, built to
-            work together, priced so anyone can afford it.
+            Every product I build is designed to do one thing exceptionally
+            well. No bloat, no feature creep. Each tool is its own standalone
+            product with its own pricing, so you only pay for what you need.
           </p>
         </div>
       </section>
@@ -147,11 +147,11 @@ export default function AboutPage() {
             Join us
           </h2>
           <p className="mt-3 text-lg text-muted-foreground">
-            Whether you&apos;re a solo founder or a growing team, microooo has
-            the tools you need to ship faster and spend less.
+            Whether you&apos;re a solo founder or a growing team, check out
+            the products and find the right tool for you.
           </p>
-          <Button size="lg" className="mt-6" render={<Link href="/signup" />}>
-            Get Started Free
+          <Button size="lg" className="mt-6" render={<Link href="/products" />}>
+            Explore Products
             <ArrowRight className="size-4" />
           </Button>
         </div>

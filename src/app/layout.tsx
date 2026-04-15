@@ -10,22 +10,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "microooo — 15 Micro-SaaS Tools. One Subscription.",
+  title: "microooo — Products by Sinan",
   description:
-    "All the tools your business needs — group cards, feedback boards, social walls, onboarding, screenshots, legal pages, OG images, and more. One dashboard. One subscription. Zero complexity.",
+    "A collection of standalone micro-SaaS products built by Sinan — group cards, feedback boards, social walls, onboarding, screenshots, legal pages, OG images, and more.",
   openGraph: {
-    title: "microooo — 15 Micro-SaaS Tools. One Subscription.",
+    title: "microooo — Products by Sinan",
     description:
-      "All the tools your business needs — group cards, feedback boards, social walls, onboarding, screenshots, legal pages, OG images, and more.",
+      "A collection of standalone micro-SaaS products built by Sinan — group cards, feedback boards, social walls, onboarding, screenshots, legal pages, OG images, and more.",
     url: "https://microooo.com",
     siteName: "microooo",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "microooo — 15 Micro-SaaS Tools. One Subscription.",
+    title: "microooo — Products by Sinan",
     description:
-      "All the tools your business needs in one platform.",
+      "A collection of standalone micro-SaaS products built by Sinan.",
   },
 };
 

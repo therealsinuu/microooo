@@ -50,7 +50,7 @@ import {
 /* ================================================================ */
 
 const stats = [
-  { value: "15", label: "Products", icon: Package },
+  { value: "7", label: "Products", icon: Package },
   { value: "10,000+", label: "Users", icon: Users },
   { value: "99.9%", label: "Uptime", icon: Zap },
   { value: "24/7", label: "Support", icon: Headphones },
@@ -68,62 +68,62 @@ const trustedCompanies = [
 const steps = [
   {
     number: "01",
-    title: "Sign Up",
+    title: "Browse Products",
     description:
-      "Create your free account in seconds. No credit card required. Just pick a plan, enter your email, and you are in. The entire process takes under 30 seconds.",
-    icon: UserPlus,
+      "Explore our collection of standalone products. Each one is designed to solve a specific problem exceptionally well.",
+    icon: MousePointerClick,
   },
   {
     number: "02",
-    title: "Choose Your Tools",
+    title: "Sign Up Directly",
     description:
-      "Browse all 15 products and activate the ones your team needs. Mix and match freely across categories. Switch tools on or off anytime from your dashboard.",
-    icon: MousePointerClick,
+      "Found a product you like? Sign up directly on that product's site. Each product has its own account, pricing, and free trial.",
+    icon: UserPlus,
   },
   {
     number: "03",
     title: "Launch & Grow",
     description:
-      "Deploy your tools, connect them to your existing workflow, and scale your business. Everything works together seamlessly from day one.",
+      "Start using the product right away. Each tool is built to get you up and running in minutes, not days.",
     icon: Rocket,
   },
 ];
 
 const platformFeatures = [
   {
-    title: "One Dashboard",
+    title: "Standalone Products",
     description:
-      "Manage every product from a single, unified dashboard. No more tab juggling or password hunting across a dozen different apps.",
+      "Each product has its own dedicated site, login, and subscription. Use only what you need — no bundling required.",
     icon: LayoutDashboard,
   },
   {
-    title: "Single Subscription",
+    title: "Fair Pricing",
     description:
-      "One plan, one invoice, one login. Access everything with a single subscription. No surprise charges or hidden fees.",
+      "Every product is priced independently and transparently. Pay only for the tools you actually use.",
     icon: CreditCard,
   },
   {
     title: "No Code Required",
     description:
-      "Every tool is designed for non-technical users. Drag, drop, publish. If you can use a browser, you can use microooo.",
+      "Every tool is designed for non-technical users. Drag, drop, publish. If you can use a browser, you can use our products.",
     icon: Code2,
   },
   {
     title: "API Access",
     description:
-      "Full REST APIs for every product. Build custom integrations, automate workflows, and connect microooo to your existing stack.",
+      "Full REST APIs for every product. Build custom integrations, automate workflows, and connect to your existing stack.",
     icon: Wifi,
   },
   {
     title: "Team Collaboration",
     description:
-      "Invite your team, assign roles, and collaborate across every product seamlessly. Everyone stays in sync, always.",
+      "Invite your team, assign roles, and collaborate seamlessly within each product. Everyone stays in sync, always.",
     icon: Users,
   },
   {
     title: "Custom Branding",
     description:
-      "White-label every tool with your logo, colors, and custom domain. Your customers never see the microooo brand.",
+      "White-label your tools with your logo, colors, and custom domain. Your customers never see our brand.",
     icon: Paintbrush,
   },
   {
@@ -140,64 +140,12 @@ const platformFeatures = [
   },
 ];
 
-const pricingTiers = [
-  {
-    name: "Starter",
-    price: "$9",
-    period: "/mo",
-    description: "Perfect for solo makers and small projects.",
-    features: [
-      "Up to 3 products",
-      "1,000 monthly actions",
-      "Community support",
-      "Basic analytics",
-      "1 team member",
-    ],
-    cta: "Start Free Trial",
-    highlighted: false,
-  },
-  {
-    name: "Pro",
-    price: "$29",
-    period: "/mo",
-    description: "For growing teams that need the full toolkit.",
-    features: [
-      "All 15 products",
-      "50,000 monthly actions",
-      "Priority support",
-      "Advanced analytics",
-      "10 team members",
-      "Custom branding",
-      "API access",
-    ],
-    cta: "Start Free Trial",
-    highlighted: true,
-  },
-  {
-    name: "Enterprise",
-    price: "$79",
-    period: "/mo",
-    description: "For companies that need scale and control.",
-    features: [
-      "All 15 products",
-      "Unlimited actions",
-      "Dedicated support",
-      "Full analytics suite",
-      "Unlimited team members",
-      "Custom branding",
-      "API access",
-      "Custom domain",
-      "SSO / SAML",
-    ],
-    cta: "Contact Sales",
-    highlighted: false,
-  },
-];
+/* Pricing tiers removed — each product has its own pricing */
 
 const testimonials = [
   {
     quote:
-      "We replaced 6 different subscriptions with microooo. The unified dashboard alone saves us hours every week. I cannot imagine going back to the old way of doing things.",
+      "GroupCheers transformed how our team celebrates milestones. The group cards feature is beautifully designed and so easy to use. Highly recommended for any remote team.",
     name: "Sarah Chen",
     role: "Head of Growth, Launchpad.io",
     avatar: "SC",
@@ -205,7 +153,7 @@ const testimonials = [
   },
   {
     quote:
-      "The micro-SaaS tools are incredible. LegalKit saved us $2,000 in legal fees and OGSnap made our social shares look 10x better. Every tool actually works — no filler products here.",
+      "LegalKit saved us $2,000 in legal fees and OGSnap made our social shares look 10x better. Every product Sinan builds actually works — no filler here.",
     name: "Marcus Rivera",
     role: "Founder, NomadStack",
     avatar: "MR",
@@ -213,7 +161,7 @@ const testimonials = [
   },
   {
     quote:
-      "I was skeptical about bundled tools, but every single product in microooo is genuinely well-built. The team behind this clearly cares about quality over quantity. Highly recommended.",
+      "Every product from microooo is genuinely well-built. You can tell the builder cares about quality over quantity. I keep coming back to try new ones as they launch.",
     name: "Aisha Patel",
     role: "CTO, Briefly",
     avatar: "AP",
@@ -223,23 +171,23 @@ const testimonials = [
 
 const blogPosts = [
   {
-    title: "Why Micro-SaaS Bundles Are the Future of Business Software",
+    title: "Why Focused Micro-SaaS Products Beat Bloated Enterprise Software",
     excerpt:
-      "The average startup uses 12+ SaaS tools. We break down why bundled micro-tools are replacing bloated enterprise software — and saving teams thousands per year.",
+      "The average startup uses 12+ SaaS tools. We break down why focused, standalone micro-tools are replacing bloated enterprise software — and doing it better.",
     date: "Apr 10, 2026",
     category: "Industry",
   },
   {
-    title: "How We Built 15 Products With a Team of 8",
+    title: "How I Build and Ship Standalone Products as an Indie Maker",
     excerpt:
-      "A behind-the-scenes look at the architecture, design system, and engineering practices that let our small team ship and maintain 15 production-grade SaaS tools.",
+      "A behind-the-scenes look at the architecture, design system, and engineering practices that let me ship and maintain multiple production-grade SaaS tools solo.",
     date: "Apr 3, 2026",
     category: "Engineering",
   },
   {
-    title: "The True Cost of Your SaaS Stack (And How to Cut It in Half)",
+    title: "The True Cost of Your SaaS Stack (And How to Cut It)",
     excerpt:
-      "Most teams do not realize they are spending $200+/month on overlapping tools. Here is a framework for auditing your stack and consolidating without losing functionality.",
+      "Most teams do not realize they are spending $200+/month on overlapping tools. Here is a framework for auditing your stack and finding the right standalone tools.",
     date: "Mar 27, 2026",
     category: "Strategy",
   },
@@ -247,54 +195,49 @@ const blogPosts = [
 
 const faqs = [
   {
-    question: "Can I try microooo for free?",
+    question: "Are the products free to try?",
     answer:
-      "Yes. Every plan comes with a 14-day free trial, no credit card required. You can explore all the products and decide which plan works best for you before paying anything.",
+      "Most products offer a free tier or a free trial. Visit any product's site to see its specific pricing and trial options.",
   },
   {
-    question: "Do I get access to all 15 products?",
+    question: "Do I need one account for all products?",
     answer:
-      "On the Pro and Enterprise plans, you get access to all 15 products. The Starter plan includes up to 3 products of your choice, and you can upgrade anytime to unlock the full suite.",
+      "No. Each product is standalone with its own account and login. You sign up separately for each product you want to use.",
   },
   {
-    question: "Can I use microooo tools on my own domain?",
+    question: "Does each product have its own pricing?",
     answer:
-      "Yes. Pro and Enterprise plans support custom domains for all embeddable tools. Your visitors will never see the microooo brand unless you want them to.",
+      "Yes. Every product has its own independent pricing. Visit the product's site to see plans and pricing details.",
   },
   {
     question: "Is there an API?",
     answer:
-      "Every product in the microooo suite comes with a full REST API. You can automate workflows, build custom integrations, and connect microooo to your existing tools with ease.",
+      "Many of our products come with a full REST API. Check the specific product's documentation for API availability and details.",
   },
   {
-    question: "What happens if I cancel?",
+    question: "What happens if I cancel a product?",
     answer:
-      "You can cancel anytime. Your data is retained for 30 days after cancellation, so you can export everything or reactivate your account without losing anything.",
+      "You can cancel any product anytime. Your data is typically retained for 30 days after cancellation, so you can export everything or reactivate without losing anything.",
   },
   {
-    question: "Do you offer refunds?",
+    question: "Who builds these products?",
     answer:
-      "Yes. If you are not satisfied within the first 30 days, we will issue a full refund. No questions asked. We want you to feel confident in your decision.",
+      "All microooo products are built by Sinan, an indie maker focused on creating simple, focused tools that solve real problems.",
   },
   {
-    question: "Can I switch plans later?",
+    question: "Will there be more products?",
     answer:
-      "Absolutely. You can upgrade or downgrade your plan at any time from your dashboard. Changes take effect immediately, and we prorate the difference so you only pay for what you use.",
-  },
-  {
-    question: "Do the tools integrate with each other?",
-    answer:
-      "Yes. All 15 products share a common data layer and authentication system. You can pass data between tools, trigger actions across products, and build powerful cross-tool workflows without any extra setup.",
+      "Yes! New products are being built and launched regularly. Follow us to stay updated on new launches.",
   },
 ];
 
 const comparisonRows = [
-  { label: "Monthly cost", individual: "$200+/mo", microooo: "$29/mo" },
-  { label: "Number of logins", individual: "15 separate logins", microooo: "1 single login" },
-  { label: "Integration", individual: "No integration", microooo: "Fully integrated" },
-  { label: "Billing", individual: "15 invoices", microooo: "1 invoice" },
-  { label: "Support", individual: "15 support teams", microooo: "1 dedicated team" },
-  { label: "Data portability", individual: "Scattered data", microooo: "Unified data layer" },
+  { label: "Focus", individual: "Bloated feature sets", microooo: "Does one thing well" },
+  { label: "Pricing", individual: "Expensive enterprise tiers", microooo: "Fair, transparent pricing" },
+  { label: "Setup time", individual: "Days of configuration", microooo: "Minutes to get started" },
+  { label: "Support", individual: "Ticket queues", microooo: "Direct from the builder" },
+  { label: "Updates", individual: "Slow release cycles", microooo: "Shipped fast, iterated faster" },
+  { label: "Built by", individual: "Large corporations", microooo: "An indie maker who cares" },
 ];
 
 /* ================================================================ */
@@ -323,48 +266,45 @@ export default function Home() {
             className="mb-8 text-xs tracking-wide uppercase px-4 py-1.5"
           >
             <Sparkles className="size-3 mr-1.5" />
-            15 tools. One platform. Zero hassle.
+            Standalone products. Built by Sinan.
           </Badge>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] max-w-5xl mx-auto">
-            15 Micro-SaaS Tools.{" "}
+            Products Built for{" "}
             <span className="bg-gradient-to-r from-foreground via-foreground/60 to-foreground bg-clip-text text-transparent">
-              One Subscription.
+              Modern Teams.
             </span>
           </h1>
 
           <p className="mt-8 text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Stop paying for 15 different subscriptions. microooo bundles the
-            essential tools every business needs — from feedback boards and
-            group greeting cards to legal pages, screenshot APIs, and digital
-            signage — into a single, affordable plan that saves you hundreds
-            every month.
+            A collection of standalone micro-SaaS products — from feedback
+            boards and group greeting cards to legal pages, screenshot APIs,
+            and digital signage. Each product has its own pricing and login.
+            Pick the ones you need.
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
               className="h-14 px-10 text-base font-semibold"
-              render={
-                <a href="https://groupcheers.microooo.com/signup" />
-              }
+              render={<a href="#products" />}
             >
-              Get Started Free
+              Explore Products
               <ArrowRight className="ml-2 size-5" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="h-14 px-10 text-base font-semibold"
-              render={<a href="#products" />}
+              render={<Link href="/about" />}
             >
-              View All Products
-              <ChevronDown className="ml-2 size-4" />
+              About the Builder
+              <ChevronRight className="ml-2 size-4" />
             </Button>
           </div>
 
           <p className="mt-6 text-sm text-muted-foreground">
-            No credit card required. 14-day free trial on all plans.
+            Each product has its own free tier or trial. No bundling required.
           </p>
 
           {/* Stats row */}
@@ -505,8 +445,7 @@ export default function Home() {
               How It Works
             </h2>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Get up and running in minutes, not days. Three simple steps
-              stand between you and a fully unified tool stack.
+              Find and start using the right product in minutes, not days.
             </p>
           </div>
 
@@ -561,9 +500,9 @@ export default function Home() {
               Why microooo?
             </h2>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Every feature you would expect from a premium platform, included
-              in every plan. We built the infrastructure so you can focus on
-              building your business.
+              Every product is built with care, designed to be simple, and
+              priced fairly. Here is what you can expect from any microooo
+              product.
             </p>
           </div>
 
@@ -596,11 +535,11 @@ export default function Home() {
               Compare
             </Badge>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Replace your entire stack
+              Why indie-built tools?
             </h2>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              See how microooo stacks up against paying for individual tools
-              separately. The math speaks for itself.
+              See how focused, indie-built products compare to bloated
+              enterprise software.
             </p>
           </div>
 
@@ -611,7 +550,7 @@ export default function Home() {
                 Feature
               </div>
               <div className="p-5 text-sm font-semibold text-muted-foreground border-r border-border text-center">
-                Individual Tools
+                Enterprise SaaS
               </div>
               <div className="p-5 text-sm font-semibold text-foreground text-center bg-foreground/5">
                 microooo
@@ -645,11 +584,9 @@ export default function Home() {
             <Button
               size="lg"
               className="h-12 px-8 text-base font-semibold"
-              render={
-                <a href="https://groupcheers.microooo.com/signup" />
-              }
+              render={<a href="#products" />}
             >
-              Switch to microooo
+              Explore Products
               <ArrowRight className="ml-2 size-4" />
             </Button>
           </div>
@@ -657,95 +594,28 @@ export default function Home() {
       </section>
 
       {/* ================================================================ */}
-      {/* PRICING PREVIEW                                                  */}
+      {/* PRICING NOTE                                                     */}
       {/* ================================================================ */}
       <section className="border-b bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 py-28">
-          <div className="text-center mb-20">
-            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
-              Pricing
-            </Badge>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              No hidden fees. No per-seat charges. No surprises. Just pick a
-              plan and start building.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-            {pricingTiers.map((tier) => (
-              <Card
-                key={tier.name}
-                className={`flex flex-col border-2 ${
-                  tier.highlighted
-                    ? "border-foreground"
-                    : "border-border"
-                } relative`}
-              >
-                {tier.highlighted && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="text-xs px-4 py-1">
-                      Most Popular
-                    </Badge>
-                  </div>
-                )}
-                <CardHeader className="text-center pb-2">
-                  <CardTitle className="text-xl">{tier.name}</CardTitle>
-                  <CardDescription className="mt-1">
-                    {tier.description}
-                  </CardDescription>
-                  <div className="mt-6 mb-2">
-                    <span className="text-5xl font-bold tracking-tight">
-                      {tier.price}
-                    </span>
-                    <span className="text-lg text-muted-foreground">
-                      {tier.period}
-                    </span>
-                  </div>
-                </CardHeader>
-
-                <Separator />
-
-                <CardContent className="flex-1 pt-6">
-                  <ul className="space-y-3.5">
-                    {tier.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-3 text-sm"
-                      >
-                        <Check className="size-4 shrink-0 text-emerald-600" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-
-                <CardFooter className="flex-col gap-3 pt-4">
-                  <Button
-                    className="w-full h-11 text-sm font-semibold"
-                    variant={tier.highlighted ? "default" : "outline"}
-                    render={
-                      <a href="https://groupcheers.microooo.com/signup" />
-                    }
-                  >
-                    {tier.cta}
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-
-          <p className="mt-12 text-center text-sm text-muted-foreground">
-            All plans include a 14-day free trial.{" "}
-            <Link
-              href="/pricing"
-              className="underline underline-offset-4 hover:text-foreground font-medium"
-            >
-              View full pricing details
-            </Link>
+        <div className="mx-auto max-w-3xl px-6 py-28 text-center">
+          <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
+            Pricing
+          </Badge>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            Pay Only for What You Use
+          </h2>
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Each product has its own independent pricing and free tier.
+            No bundles, no lock-in. Visit any product to see its plans.
           </p>
+          <Button
+            size="lg"
+            className="mt-10 h-14 px-10 text-base font-semibold"
+            render={<a href="#products" />}
+          >
+            Browse Products
+            <ArrowRight className="ml-2 size-5" />
+          </Button>
         </div>
       </section>
 
@@ -944,39 +814,36 @@ export default function Home() {
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight max-w-3xl mx-auto leading-[1.1]">
-            Ready to simplify your stack?
+            Find the right tool for your team
           </h2>
 
           <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Join thousands of teams who ditched their bloated toolchain for
-            one clean, powerful platform. Start your free trial today and
-            see the difference in minutes.
+            Every product is standalone, focused, and built to solve a real
+            problem. Browse the collection and start using the ones that
+            fit your workflow.
           </p>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
               className="h-14 px-12 text-base font-semibold"
-              render={
-                <a href="https://groupcheers.microooo.com/signup" />
-              }
+              render={<a href="#products" />}
             >
-              Get Started Free
+              Explore Products
               <ArrowRight className="ml-2 size-5" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="h-14 px-12 text-base font-semibold"
-              render={<Link href="/pricing" />}
+              render={<Link href="/about" />}
             >
-              View Pricing
+              About the Builder
             </Button>
           </div>
 
           <p className="mt-6 text-sm text-muted-foreground">
-            No credit card required. Cancel anytime. 30-day money-back
-            guarantee.
+            Each product has its own pricing and free trial.
           </p>
         </div>
       </section>
@@ -990,9 +857,8 @@ export default function Home() {
             <div>
               <p className="text-2xl font-bold tracking-tight">microooo</p>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                15 micro-SaaS tools bundled into one simple subscription.
-                Built for makers, founders, and growing teams who refuse to
-                overpay for software.
+                A collection of standalone micro-SaaS products.
+                Built by Sinan for makers, founders, and growing teams.
               </p>
             </div>
             <div>
