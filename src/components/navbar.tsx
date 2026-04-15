@@ -52,7 +52,7 @@ export function Navbar() {
                           <li key={product.id}>
                             <NavigationMenuLink
                               render={
-                                <Link href={`/products/${product.id}`} />
+                                <a href={product.appUrl} />
                               }
                             >
                               <span className="text-base">{product.icon}</span>
@@ -80,7 +80,7 @@ export function Navbar() {
                           <li key={product.id}>
                             <NavigationMenuLink
                               render={
-                                <Link href={`/products/${product.id}`} />
+                                <a href={product.appUrl} />
                               }
                             >
                               <span className="text-base">{product.icon}</span>
