@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { products, productCategories } from "@/lib/products";
+import { visibleProducts } from "@/lib/products";
 import {
   Card,
   CardContent,
@@ -22,7 +22,7 @@ export const metadata = {
 function ProductCard({
   product,
 }: {
-  product: (typeof products)[number];
+  product: (typeof visibleProducts)[number];
 }) {
   return (
     <Link href={product.appUrl} className="group block">
@@ -73,7 +73,7 @@ export default function ProductsPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <div className="flex flex-col items-center text-center">
             <Badge variant="outline" className="mb-4 text-xs uppercase tracking-wider">
-              {products.length} Products
+              {visibleProducts.length} Products
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
               Everything we build
@@ -94,7 +94,7 @@ export default function ProductsPage() {
               Products
             </h2>
             <Badge variant="secondary" className="text-xs">
-              {productCategories.products.length}
+              {visibleProducts.length}
             </Badge>
           </div>
           <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
@@ -102,30 +102,7 @@ export default function ProductsPage() {
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {productCategories.products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Micro SaaS Category */}
-      <section className="border-b bg-zinc-50 dark:bg-zinc-900/50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="flex items-center gap-3">
-            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-              Micro SaaS
-            </h2>
-            <Badge variant="secondary" className="text-xs">
-              {productCategories.microsaas.length}
-            </Badge>
-          </div>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Lightweight utilities that do one thing perfectly.
-          </p>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {productCategories.microsaas.map((product) => (
+            {visibleProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

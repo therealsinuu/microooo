@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { products, productCategories } from "@/lib/products";
+import { visibleProducts } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -302,8 +302,7 @@ const comparisonRows = [
 /* ================================================================ */
 
 export default function Home() {
-  const mainProducts = productCategories.products;
-  const microTools = productCategories.microsaas;
+  const mainProducts = visibleProducts;
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -492,67 +491,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================================================================ */}
-      {/* MICRO SAAS TOOLS                                                 */}
-      {/* ================================================================ */}
-      <section className="border-b bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 py-28">
-          <div className="text-center mb-20">
-            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
-              Micro Tools
-            </Badge>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Ten lightweight tools
-            </h2>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Focused utilities that each solve one problem exceptionally well.
-              Every single one replaces a standalone subscription you are
-              probably already paying for.
-            </p>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {microTools.map((tool) => (
-              <a
-                key={tool.id}
-                href={tool.appUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
-              >
-                <Card className="h-full border border-border transition-colors group-hover:bg-muted/50">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center gap-3">
-                      <span
-                        className={`flex items-center justify-center size-12 rounded-xl text-2xl ${tool.bgColor}`}
-                      >
-                        {tool.icon}
-                      </span>
-                      <div>
-                        <CardTitle className="text-base group-hover:underline underline-offset-4">
-                          {tool.name}
-                        </CardTitle>
-                        <CardDescription className="text-xs">
-                          {tool.tagline}
-                        </CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {tool.description.slice(0, 140)}...
-                    </p>
-                    <span className="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-foreground">
-                      Try {tool.name}
-                      <ArrowUpRight className="size-3" />
-                    </span>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ================================================================ */}
       {/* HOW IT WORKS                                                     */}
@@ -1061,23 +999,6 @@ export default function Home() {
               <p className="text-sm font-semibold mb-5">Products</p>
               <ul className="space-y-3">
                 {mainProducts.map((p) => (
-                  <li key={p.id}>
-                    <a
-                      href={p.appUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {p.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-sm font-semibold mb-5">Micro Tools</p>
-              <ul className="space-y-3">
-                {microTools.slice(0, 5).map((p) => (
                   <li key={p.id}>
                     <a
                       href={p.appUrl}

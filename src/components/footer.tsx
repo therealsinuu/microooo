@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { products } from "@/lib/products";
+import { visibleProducts } from "@/lib/products";
 import { Mail } from "lucide-react";
 
 const companyLinks = [
@@ -72,7 +72,7 @@ export function Footer() {
               Products
             </h3>
             <ul className="mt-3 space-y-2">
-              {products.map((product) => (
+              {visibleProducts.map((product) => (
                 <li key={product.id}>
                   <a
                     href={product.appUrl}

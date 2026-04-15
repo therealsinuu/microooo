@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu } from "lucide-react";
-import { products } from "@/lib/products";
+import { visibleProducts } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -54,7 +54,7 @@ export function Navbar() {
                 <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                 <NavigationMenuContent className="w-[600px]">
                   <div className="grid grid-cols-3 gap-1 p-4">
-                    {products.map((product) => (
+                    {visibleProducts.map((product) => (
                       <NavigationMenuLink
                         key={product.id}
                         render={
@@ -141,7 +141,7 @@ export function Navbar() {
                     Products
                   </h4>
                   <ul className="space-y-1">
-                    {products.map((product) => (
+                    {visibleProducts.map((product) => (
                       <li key={product.id}>
                         <SheetClose
                           render={

@@ -68,7 +68,7 @@ export default async function ProductPage({
         <div className="relative mx-auto max-w-5xl px-6 py-24 sm:py-32 lg:py-40">
           <div className="flex flex-col items-center text-center">
             <Badge variant="outline" className="mb-6 text-xs uppercase tracking-wider">
-              {product.category === "product" ? "Product" : "Micro SaaS"}
+              Product
             </Badge>
 
             <div
