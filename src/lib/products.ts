@@ -308,7 +308,7 @@ export const products: Product[] = [
     tagline: "Announce anything. Beautifully.",
     description:
       "Add eye-catching announcement bars to your website in seconds. Promote sales, announce features, share news, or collect emails — with beautiful, customizable bars that grab attention without being annoying.",
-    category: "microsaas",
+    category: "product",
     color: "text-red-600",
     bgColor: "bg-red-500/10",
     icon: "📢",
