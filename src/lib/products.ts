@@ -452,7 +452,7 @@ export const products: Product[] = [
     tagline: "Smart redirects. Zero downtime.",
     description:
       "Create and manage URL redirects without touching your server config. Perfect for marketing campaigns, link shortening, A/B testing landing pages, and managing URL migrations. Real-time analytics on every redirect.",
-    category: "microsaas",
+    category: "product",
     color: "text-teal-600",
     bgColor: "bg-teal-500/10",
     icon: "🔗",
