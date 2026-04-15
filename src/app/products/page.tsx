@@ -25,7 +25,7 @@ function ProductCard({
   product: (typeof products)[number];
 }) {
   return (
-    <Link href={`/products/${product.id}`} className="group block">
+    <Link href={product.appUrl} className="group block">
       <Card className="h-full border border-zinc-200 transition-colors group-hover:border-zinc-400 dark:border-zinc-800 dark:group-hover:border-zinc-600">
         <CardHeader>
           <div className="flex items-start justify-between">

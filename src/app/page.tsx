@@ -349,7 +349,7 @@ export default function Home() {
                 </CardContent>
                 <CardFooter>
                   <Link
-                    href={`/products/${product.id}`}
+                    href={product.appUrl}
                     className="inline-flex items-center gap-1 text-sm font-medium hover:underline"
                   >
                     Learn More <ArrowRight className="size-3.5" />
@@ -381,7 +381,7 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {microTools.map((tool) => (
-              <Link key={tool.id} href={`/products/${tool.id}`} className="group">
+              <Link key={tool.id} href={tool.appUrl} className="group">
                 <Card className="h-full border border-border transition-colors group-hover:bg-muted/50">
                   <CardHeader>
                     <div className="flex items-center gap-3">
@@ -698,7 +698,7 @@ export default function Home() {
                 {mainProducts.slice(0, 5).map((p) => (
                   <li key={p.id}>
                     <Link
-                      href={`/products/${p.id}`}
+                      href={p.appUrl}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {p.name}
@@ -713,7 +713,7 @@ export default function Home() {
                 {microTools.slice(0, 5).map((p) => (
                   <li key={p.id}>
                     <Link
-                      href={`/products/${p.id}`}
+                      href={p.appUrl}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {p.name}

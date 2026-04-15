@@ -161,7 +161,7 @@ export function Navbar() {
                         <SheetClose
                           render={
                             <Link
-                              href={`/products/${product.id}`}
+                              href={product.appUrl}
                               className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
                             />
                           }
@@ -185,7 +185,7 @@ export function Navbar() {
                         <SheetClose
                           render={
                             <Link
-                              href={`/products/${product.id}`}
+                              href={product.appUrl}
                               className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
                             />
                           }
