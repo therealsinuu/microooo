@@ -26,6 +26,18 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
+    <>
+    <div className="w-full bg-primary text-primary-foreground">
+      <div className="mx-auto flex h-10 max-w-7xl items-center justify-center gap-2 px-4 sm:px-6 lg:px-8 text-sm">
+        <span className="font-medium">🚀 15 micro-SaaS tools. One subscription. Start free today.</span>
+        <a
+          href="https://groupcheers.microooo.com/signup"
+          className="underline underline-offset-2 font-semibold hover:opacity-80 transition-opacity"
+        >
+          Get started →
+        </a>
+      </div>
+    </div>
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
@@ -266,5 +278,6 @@ export function Navbar() {
         </div>
       </div>
     </header>
+    </>
   );
 }
