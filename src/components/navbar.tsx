@@ -120,6 +120,16 @@ export function Navbar() {
                   About
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
+              {/* Blog */}
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  render={<Link href="#blog" />}
+                  className="h-9 px-2.5 py-1.5 text-sm font-medium"
+                >
+                  Blog
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -160,7 +170,7 @@ export function Navbar() {
                       <li key={product.id}>
                         <SheetClose
                           render={
-                            <Link
+                            <a
                               href={product.appUrl}
                               className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
                             />
@@ -184,7 +194,7 @@ export function Navbar() {
                       <li key={product.id}>
                         <SheetClose
                           render={
-                            <Link
+                            <a
                               href={product.appUrl}
                               className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
                             />
@@ -223,6 +233,18 @@ export function Navbar() {
                         }
                       >
                         About
+                      </SheetClose>
+                    </li>
+                    <li>
+                      <SheetClose
+                        render={
+                          <Link
+                            href="#blog"
+                            className="block rounded-md px-2 py-1.5 text-sm font-medium hover:bg-muted"
+                          />
+                        }
+                      >
+                        Blog
                       </SheetClose>
                     </li>
                   </ul>

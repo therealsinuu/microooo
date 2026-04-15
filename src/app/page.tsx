@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { products, productCategories } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -11,12 +14,6 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
 import {
   ArrowRight,
   LayoutDashboard,
@@ -36,7 +33,21 @@ import {
   Globe,
   Package,
   Clock,
+  ChevronDown,
+  ChevronRight,
+  X,
+  Minus,
+  BookOpen,
+  CalendarDays,
+  Tag,
+  Sparkles,
+  CircleDot,
+  ArrowUpRight,
 } from "lucide-react";
+
+/* ================================================================ */
+/* DATA                                                             */
+/* ================================================================ */
 
 const stats = [
   { value: "15", label: "Products", icon: Package },
@@ -45,26 +56,35 @@ const stats = [
   { value: "24/7", label: "Support", icon: Headphones },
 ];
 
+const trustedCompanies = [
+  "Acme Inc",
+  "TechCorp",
+  "StartupXYZ",
+  "DesignCo",
+  "LaunchPad",
+  "CloudBase",
+];
+
 const steps = [
   {
     number: "01",
     title: "Sign Up",
     description:
-      "Create your free account in seconds. No credit card required to get started.",
+      "Create your free account in seconds. No credit card required. Just pick a plan, enter your email, and you are in. The entire process takes under 30 seconds.",
     icon: UserPlus,
   },
   {
     number: "02",
     title: "Choose Your Tools",
     description:
-      "Browse all 15 products and activate the ones you need. Mix and match freely.",
+      "Browse all 15 products and activate the ones your team needs. Mix and match freely across categories. Switch tools on or off anytime from your dashboard.",
     icon: MousePointerClick,
   },
   {
     number: "03",
     title: "Launch & Grow",
     description:
-      "Deploy your tools, connect them to your workflow, and scale your business.",
+      "Deploy your tools, connect them to your existing workflow, and scale your business. Everything works together seamlessly from day one.",
     icon: Rocket,
   },
 ];
@@ -73,49 +93,49 @@ const platformFeatures = [
   {
     title: "One Dashboard",
     description:
-      "Manage every product from a single, unified dashboard. No more tab juggling.",
+      "Manage every product from a single, unified dashboard. No more tab juggling or password hunting across a dozen different apps.",
     icon: LayoutDashboard,
   },
   {
     title: "Single Subscription",
     description:
-      "One plan, one invoice, one login. Access everything with a single subscription.",
+      "One plan, one invoice, one login. Access everything with a single subscription. No surprise charges or hidden fees.",
     icon: CreditCard,
   },
   {
     title: "No Code Required",
     description:
-      "Every tool is designed for non-technical users. Drag, drop, publish.",
+      "Every tool is designed for non-technical users. Drag, drop, publish. If you can use a browser, you can use microooo.",
     icon: Code2,
   },
   {
     title: "API Access",
     description:
-      "Full REST APIs for every product. Build custom integrations and automate workflows.",
+      "Full REST APIs for every product. Build custom integrations, automate workflows, and connect microooo to your existing stack.",
     icon: Wifi,
   },
   {
     title: "Team Collaboration",
     description:
-      "Invite your team, assign roles, and collaborate across every product seamlessly.",
+      "Invite your team, assign roles, and collaborate across every product seamlessly. Everyone stays in sync, always.",
     icon: Users,
   },
   {
     title: "Custom Branding",
     description:
-      "White-label every tool with your logo, colors, and custom domain.",
+      "White-label every tool with your logo, colors, and custom domain. Your customers never see the microooo brand.",
     icon: Paintbrush,
   },
   {
     title: "Priority Support",
     description:
-      "Get help when you need it. Real humans, fast responses, every time.",
+      "Get help when you need it. Real humans, fast responses, every single time. No bots, no runaround.",
     icon: Headphones,
   },
   {
-    title: "99.9% Uptime",
+    title: "99.9% Uptime SLA",
     description:
-      "Enterprise-grade infrastructure. Your tools stay online, always.",
+      "Enterprise-grade infrastructure backed by a real SLA. Your tools stay online, always. We guarantee it.",
     icon: ShieldCheck,
   },
 ];
@@ -177,24 +197,51 @@ const pricingTiers = [
 const testimonials = [
   {
     quote:
-      "We replaced 6 different subscriptions with microooo. The unified dashboard alone saves us hours every week.",
+      "We replaced 6 different subscriptions with microooo. The unified dashboard alone saves us hours every week. I cannot imagine going back to the old way of doing things.",
     name: "Sarah Chen",
     role: "Head of Growth, Launchpad.io",
     avatar: "SC",
+    stars: 5,
   },
   {
     quote:
-      "The micro-SaaS tools are incredible. LegalKit saved us $2,000 in legal fees and OGSnap made our social shares look 10x better.",
+      "The micro-SaaS tools are incredible. LegalKit saved us $2,000 in legal fees and OGSnap made our social shares look 10x better. Every tool actually works — no filler products here.",
     name: "Marcus Rivera",
     role: "Founder, NomadStack",
     avatar: "MR",
+    stars: 5,
   },
   {
     quote:
-      "I was skeptical about bundled tools, but every single product in microooo is genuinely well-built. No filler.",
+      "I was skeptical about bundled tools, but every single product in microooo is genuinely well-built. The team behind this clearly cares about quality over quantity. Highly recommended.",
     name: "Aisha Patel",
     role: "CTO, Briefly",
     avatar: "AP",
+    stars: 5,
+  },
+];
+
+const blogPosts = [
+  {
+    title: "Why Micro-SaaS Bundles Are the Future of Business Software",
+    excerpt:
+      "The average startup uses 12+ SaaS tools. We break down why bundled micro-tools are replacing bloated enterprise software — and saving teams thousands per year.",
+    date: "Apr 10, 2026",
+    category: "Industry",
+  },
+  {
+    title: "How We Built 15 Products With a Team of 8",
+    excerpt:
+      "A behind-the-scenes look at the architecture, design system, and engineering practices that let our small team ship and maintain 15 production-grade SaaS tools.",
+    date: "Apr 3, 2026",
+    category: "Engineering",
+  },
+  {
+    title: "The True Cost of Your SaaS Stack (And How to Cut It in Half)",
+    excerpt:
+      "Most teams do not realize they are spending $200+/month on overlapping tools. Here is a framework for auditing your stack and consolidating without losing functionality.",
+    date: "Mar 27, 2026",
+    category: "Strategy",
   },
 ];
 
@@ -202,12 +249,12 @@ const faqs = [
   {
     question: "Can I try microooo for free?",
     answer:
-      "Yes. Every plan comes with a 14-day free trial, no credit card required. You can explore all the products and decide which plan works best for you.",
+      "Yes. Every plan comes with a 14-day free trial, no credit card required. You can explore all the products and decide which plan works best for you before paying anything.",
   },
   {
     question: "Do I get access to all 15 products?",
     answer:
-      "On the Pro and Enterprise plans, you get access to all 15 products. The Starter plan includes up to 3 products of your choice, and you can upgrade anytime.",
+      "On the Pro and Enterprise plans, you get access to all 15 products. The Starter plan includes up to 3 products of your choice, and you can upgrade anytime to unlock the full suite.",
   },
   {
     question: "Can I use microooo tools on my own domain?",
@@ -217,7 +264,7 @@ const faqs = [
   {
     question: "Is there an API?",
     answer:
-      "Every product in the microooo suite comes with a full REST API. You can automate workflows, build custom integrations, and connect microooo to your existing tools.",
+      "Every product in the microooo suite comes with a full REST API. You can automate workflows, build custom integrations, and connect microooo to your existing tools with ease.",
   },
   {
     question: "What happens if I cancel?",
@@ -227,73 +274,114 @@ const faqs = [
   {
     question: "Do you offer refunds?",
     answer:
-      "Yes. If you are not satisfied within the first 30 days, we will issue a full refund. No questions asked.",
+      "Yes. If you are not satisfied within the first 30 days, we will issue a full refund. No questions asked. We want you to feel confident in your decision.",
+  },
+  {
+    question: "Can I switch plans later?",
+    answer:
+      "Absolutely. You can upgrade or downgrade your plan at any time from your dashboard. Changes take effect immediately, and we prorate the difference so you only pay for what you use.",
+  },
+  {
+    question: "Do the tools integrate with each other?",
+    answer:
+      "Yes. All 15 products share a common data layer and authentication system. You can pass data between tools, trigger actions across products, and build powerful cross-tool workflows without any extra setup.",
   },
 ];
+
+const comparisonRows = [
+  { label: "Monthly cost", individual: "$200+/mo", microooo: "$29/mo" },
+  { label: "Number of logins", individual: "15 separate logins", microooo: "1 single login" },
+  { label: "Integration", individual: "No integration", microooo: "Fully integrated" },
+  { label: "Billing", individual: "15 invoices", microooo: "1 invoice" },
+  { label: "Support", individual: "15 support teams", microooo: "1 dedicated team" },
+  { label: "Data portability", individual: "Scattered data", microooo: "Unified data layer" },
+];
+
+/* ================================================================ */
+/* COMPONENT                                                        */
+/* ================================================================ */
 
 export default function Home() {
   const mainProducts = productCategories.products;
   const microTools = productCategories.microsaas;
 
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* ================================================================ */}
-      {/* HERO */}
+      {/* HERO                                                             */}
       {/* ================================================================ */}
       <section className="relative overflow-hidden border-b">
+        {/* Background gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted/60 via-background to-background" />
-        <div className="relative mx-auto max-w-6xl px-6 py-28 md:py-40 text-center">
-          <Badge variant="outline" className="mb-6 text-xs tracking-wide uppercase">
-            15 tools. One platform.
+        {/* Decorative grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-32 md:py-44 lg:py-52 text-center">
+          <Badge
+            variant="outline"
+            className="mb-8 text-xs tracking-wide uppercase px-4 py-1.5"
+          >
+            <Sparkles className="size-3 mr-1.5" />
+            15 tools. One platform. Zero hassle.
           </Badge>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl mx-auto">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] max-w-5xl mx-auto">
             15 Micro-SaaS Tools.{" "}
-            <span className="bg-gradient-to-r from-foreground via-foreground/70 to-foreground bg-clip-text">
+            <span className="bg-gradient-to-r from-foreground via-foreground/60 to-foreground bg-clip-text text-transparent">
               One Subscription.
             </span>
           </h1>
 
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-8 text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Stop paying for 15 different subscriptions. microooo bundles the
-            essential tools every business needs — from feedback boards to
-            legal pages — into a single, affordable plan.
+            essential tools every business needs — from feedback boards and
+            group greeting cards to legal pages, screenshot APIs, and digital
+            signage — into a single, affordable plan that saves you hundreds
+            every month.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="h-12 px-8 text-base" render={<Link href="/signup" />}>
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="h-14 px-10 text-base font-semibold"
+              render={
+                <a href="https://groupcheers.microooo.com/signup" />
+              }
+            >
               Get Started Free
-              <ArrowRight className="ml-2 size-4" />
+              <ArrowRight className="ml-2 size-5" />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="h-12 px-8 text-base"
-              render={<Link href="/products" />}
+              className="h-14 px-10 text-base font-semibold"
+              render={<a href="#products" />}
             >
               View All Products
+              <ChevronDown className="ml-2 size-4" />
             </Button>
           </div>
 
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-6 text-sm text-muted-foreground">
             No credit card required. 14-day free trial on all plans.
           </p>
-        </div>
-      </section>
 
-      {/* ================================================================ */}
-      {/* STATS / TRUST */}
-      {/* ================================================================ */}
-      <section className="border-b">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Stats row */}
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center text-center gap-2">
-                <stat.icon className="size-6 text-muted-foreground" />
-                <span className="text-3xl md:text-4xl font-bold tracking-tight">
+              <div
+                key={stat.label}
+                className="flex flex-col items-center text-center gap-2 p-6 rounded-2xl border border-border bg-background/60 backdrop-blur-sm"
+              >
+                <stat.icon className="size-6 text-muted-foreground mb-1" />
+                <span className="text-4xl md:text-5xl font-bold tracking-tight">
                   {stat.value}
                 </span>
-                <span className="text-sm text-muted-foreground">{stat.label}</span>
+                <span className="text-sm text-muted-foreground font-medium">
+                  {stat.label}
+                </span>
               </div>
             ))}
           </div>
@@ -301,59 +389,102 @@ export default function Home() {
       </section>
 
       {/* ================================================================ */}
-      {/* MAIN PRODUCTS */}
+      {/* TRUSTED BY                                                       */}
       {/* ================================================================ */}
-      <section className="border-b">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
-              Core Suite
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+      <section className="border-b bg-muted/20">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <p className="text-center text-sm text-muted-foreground font-medium tracking-wide uppercase mb-10">
+            Trusted by 2,000+ teams worldwide
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center">
+            {trustedCompanies.map((company) => (
+              <div
+                key={company}
+                className="text-xl md:text-2xl font-bold tracking-tight text-muted-foreground/50 hover:text-muted-foreground transition-colors select-none"
+              >
+                {company}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* MAIN PRODUCTS                                                    */}
+      {/* ================================================================ */}
+      <section id="products" className="border-b scroll-mt-20">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
               Products
+            </Badge>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Built for modern teams
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Five powerful, full-featured products built for teams that want to
-              move fast without stitching together a dozen tools.
+              move fast without stitching together a dozen different tools.
+              Each one is a standalone product that happens to work even better
+              together.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {mainProducts.map((product) => (
-              <Card key={product.id} className="flex flex-col border border-border">
-                <CardHeader>
-                  <div className="flex items-center gap-3">
+          <div className="grid gap-8 lg:grid-cols-2">
+            {mainProducts.map((product, index) => (
+              <Card
+                key={product.id}
+                className={`flex flex-col border border-border overflow-hidden ${
+                  index === 0 ? "lg:col-span-2" : ""
+                }`}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex items-start gap-4">
                     <span
-                      className={`flex items-center justify-center size-12 rounded-xl text-2xl ${product.bgColor}`}
+                      className={`flex items-center justify-center size-16 rounded-2xl text-3xl ${product.bgColor} shrink-0`}
                     >
                       {product.icon}
                     </span>
-                    <div>
-                      <CardTitle className="text-lg">{product.name}</CardTitle>
-                      <CardDescription>{product.tagline}</CardDescription>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-1">
+                        <CardTitle className="text-2xl">{product.name}</CardTitle>
+                        <Badge variant="outline" className="text-[10px] uppercase tracking-wider shrink-0">
+                          Core Product
+                        </Badge>
+                      </div>
+                      <CardDescription className="text-base">
+                        {product.tagline}
+                      </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-1">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {product.description.slice(0, 160)}...
+                <CardContent className="flex-1 space-y-6">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {product.description}
                   </p>
-                  <ul className="mt-4 space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {product.features.slice(0, 4).map((feat) => (
-                      <li key={feat} className="flex items-start gap-2 text-sm">
-                        <Check className="size-4 mt-0.5 shrink-0 text-emerald-600" />
+                      <div
+                        key={feat}
+                        className="flex items-start gap-2.5 text-sm"
+                      >
+                        <div className="flex items-center justify-center size-5 rounded-full bg-emerald-500/10 shrink-0 mt-0.5">
+                          <Check className="size-3 text-emerald-600" />
+                        </div>
                         <span>{feat}</span>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </CardContent>
-                <CardFooter>
-                  <Link
+                <CardFooter className="pt-4">
+                  <a
                     href={product.appUrl}
-                    className="inline-flex items-center gap-1 text-sm font-medium hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-semibold hover:underline underline-offset-4 transition-colors"
                   >
-                    Learn More <ArrowRight className="size-3.5" />
-                  </Link>
+                    Try {product.name}
+                    <ArrowUpRight className="size-4" />
+                  </a>
                 </CardFooter>
               </Card>
             ))}
@@ -362,36 +493,43 @@ export default function Home() {
       </section>
 
       {/* ================================================================ */}
-      {/* MICRO SAAS TOOLS */}
+      {/* MICRO SAAS TOOLS                                                 */}
       {/* ================================================================ */}
       <section className="border-b bg-muted/30">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
               Micro Tools
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Micro SaaS Tools
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Ten lightweight tools
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ten lightweight, focused tools that solve one problem really well.
-              Each one replaces a standalone subscription you are probably already paying for.
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Focused utilities that each solve one problem exceptionally well.
+              Every single one replaces a standalone subscription you are
+              probably already paying for.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {microTools.map((tool) => (
-              <Link key={tool.id} href={tool.appUrl} className="group">
+              <a
+                key={tool.id}
+                href={tool.appUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
                 <Card className="h-full border border-border transition-colors group-hover:bg-muted/50">
-                  <CardHeader>
+                  <CardHeader className="pb-3">
                     <div className="flex items-center gap-3">
                       <span
-                        className={`flex items-center justify-center size-10 rounded-lg text-xl ${tool.bgColor}`}
+                        className={`flex items-center justify-center size-12 rounded-xl text-2xl ${tool.bgColor}`}
                       >
                         {tool.icon}
                       </span>
                       <div>
-                        <CardTitle className="text-base group-hover:underline">
+                        <CardTitle className="text-base group-hover:underline underline-offset-4">
                           {tool.name}
                         </CardTitle>
                         <CardDescription className="text-xs">
@@ -402,46 +540,70 @@ export default function Home() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      {tool.description.slice(0, 120)}...
+                      {tool.description.slice(0, 140)}...
                     </p>
+                    <span className="inline-flex items-center gap-1 mt-4 text-xs font-semibold text-foreground">
+                      Try {tool.name}
+                      <ArrowUpRight className="size-3" />
+                    </span>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
       {/* ================================================================ */}
-      {/* HOW IT WORKS */}
+      {/* HOW IT WORKS                                                     */}
       {/* ================================================================ */}
       <section className="border-b">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
               Simple Setup
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               How It Works
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get up and running in minutes, not days.
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Get up and running in minutes, not days. Three simple steps
+              stand between you and a fully unified tool stack.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            {steps.map((step) => (
-              <div key={step.number} className="relative flex flex-col items-center text-center">
-                <div className="flex items-center justify-center size-16 rounded-2xl border border-border bg-background mb-6">
+          <div className="grid gap-8 md:grid-cols-3 relative">
+            {/* Connecting line (desktop) */}
+            <div className="hidden md:block absolute top-[3.5rem] left-[20%] right-[20%] h-px border-t border-dashed border-border" />
+
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                className="relative flex flex-col items-center text-center"
+              >
+                {/* Step number circle */}
+                <div className="relative z-10 flex items-center justify-center size-20 rounded-full border-2 border-border bg-background mb-8">
+                  <span className="text-2xl font-bold text-foreground">
+                    {step.number}
+                  </span>
+                </div>
+
+                {/* Icon */}
+                <div className="flex items-center justify-center size-14 rounded-2xl border border-border bg-muted/50 mb-6">
                   <step.icon className="size-7 text-foreground" />
                 </div>
-                <span className="text-xs font-mono text-muted-foreground tracking-widest mb-2">
-                  STEP {step.number}
-                </span>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+
+                <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                <p className="text-muted-foreground leading-relaxed max-w-sm">
                   {step.description}
                 </p>
+
+                {/* Arrow between steps on mobile */}
+                {index < steps.length - 1 && (
+                  <div className="md:hidden flex justify-center my-6">
+                    <ChevronDown className="size-6 text-muted-foreground" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -449,20 +611,21 @@ export default function Home() {
       </section>
 
       {/* ================================================================ */}
-      {/* FEATURES OVERVIEW */}
+      {/* PLATFORM FEATURES — "Why microooo?"                              */}
       {/* ================================================================ */}
       <section className="border-b bg-muted/30">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
               Platform
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Everything You Need, Built In
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Why microooo?
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Every feature you would expect from a premium platform, included in
-              every plan.
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Every feature you would expect from a premium platform, included
+              in every plan. We built the infrastructure so you can focus on
+              building your business.
             </p>
           </div>
 
@@ -470,12 +633,12 @@ export default function Home() {
             {platformFeatures.map((feature) => (
               <div
                 key={feature.title}
-                className="flex flex-col items-start gap-3 rounded-xl border border-border bg-background p-6"
+                className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-background p-8"
               >
-                <div className="flex items-center justify-center size-10 rounded-lg bg-muted">
-                  <feature.icon className="size-5 text-foreground" />
+                <div className="flex items-center justify-center size-12 rounded-xl bg-muted border border-border">
+                  <feature.icon className="size-6 text-foreground" />
                 </div>
-                <h3 className="text-base font-semibold">{feature.title}</h3>
+                <h3 className="text-lg font-bold">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {feature.description}
                 </p>
@@ -486,64 +649,148 @@ export default function Home() {
       </section>
 
       {/* ================================================================ */}
-      {/* PRICING PREVIEW */}
+      {/* COMPARISON TABLE                                                 */}
       {/* ================================================================ */}
       <section className="border-b">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
-              Pricing
+        <div className="mx-auto max-w-5xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
+              Compare
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Simple, Transparent Pricing
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Replace your entire stack
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              No hidden fees. No per-seat charges. Just pick a plan and go.
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              See how microooo stacks up against paying for individual tools
+              separately. The math speaks for itself.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border border-border overflow-hidden">
+            {/* Table header */}
+            <div className="grid grid-cols-3 bg-muted/50">
+              <div className="p-5 text-sm font-semibold text-muted-foreground border-r border-border">
+                Feature
+              </div>
+              <div className="p-5 text-sm font-semibold text-muted-foreground border-r border-border text-center">
+                Individual Tools
+              </div>
+              <div className="p-5 text-sm font-semibold text-foreground text-center bg-foreground/5">
+                microooo
+              </div>
+            </div>
+
+            {/* Table rows */}
+            {comparisonRows.map((row, index) => (
+              <div
+                key={row.label}
+                className={`grid grid-cols-3 ${
+                  index < comparisonRows.length - 1 ? "border-b border-border" : ""
+                }`}
+              >
+                <div className="p-5 text-sm font-medium border-r border-border">
+                  {row.label}
+                </div>
+                <div className="p-5 text-sm text-muted-foreground border-r border-border text-center flex items-center justify-center gap-2">
+                  <X className="size-4 text-red-500 shrink-0" />
+                  {row.individual}
+                </div>
+                <div className="p-5 text-sm font-medium text-center bg-foreground/5 flex items-center justify-center gap-2">
+                  <Check className="size-4 text-emerald-600 shrink-0" />
+                  {row.microooo}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button
+              size="lg"
+              className="h-12 px-8 text-base font-semibold"
+              render={
+                <a href="https://groupcheers.microooo.com/signup" />
+              }
+            >
+              Switch to microooo
+              <ArrowRight className="ml-2 size-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* PRICING PREVIEW                                                  */}
+      {/* ================================================================ */}
+      <section className="border-b bg-muted/30">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
+              Pricing
+            </Badge>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              No hidden fees. No per-seat charges. No surprises. Just pick a
+              plan and start building.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
             {pricingTiers.map((tier) => (
               <Card
                 key={tier.name}
-                className={`flex flex-col border ${
+                className={`flex flex-col border-2 ${
                   tier.highlighted
-                    ? "border-foreground ring-1 ring-foreground"
+                    ? "border-foreground"
                     : "border-border"
-                }`}
+                } relative`}
               >
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg">{tier.name}</CardTitle>
-                    {tier.highlighted && (
-                      <Badge variant="default" className="text-[10px]">
-                        Most Popular
-                      </Badge>
-                    )}
+                {tier.highlighted && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <Badge className="text-xs px-4 py-1">
+                      Most Popular
+                    </Badge>
                   </div>
-                  <CardDescription>{tier.description}</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold tracking-tight">
+                )}
+                <CardHeader className="text-center pb-2">
+                  <CardTitle className="text-xl">{tier.name}</CardTitle>
+                  <CardDescription className="mt-1">
+                    {tier.description}
+                  </CardDescription>
+                  <div className="mt-6 mb-2">
+                    <span className="text-5xl font-bold tracking-tight">
                       {tier.price}
                     </span>
-                    <span className="text-muted-foreground">{tier.period}</span>
+                    <span className="text-lg text-muted-foreground">
+                      {tier.period}
+                    </span>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-1">
-                  <ul className="space-y-3">
+
+                <Separator />
+
+                <CardContent className="flex-1 pt-6">
+                  <ul className="space-y-3.5">
                     {tier.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-sm">
+                      <li
+                        key={feature}
+                        className="flex items-center gap-3 text-sm"
+                      >
                         <Check className="size-4 shrink-0 text-emerald-600" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter className="flex-col gap-3">
+
+                <CardFooter className="flex-col gap-3 pt-4">
                   <Button
-                    className="w-full"
+                    className="w-full h-11 text-sm font-semibold"
                     variant={tier.highlighted ? "default" : "outline"}
-                    render={<Link href="/pricing" />}
+                    render={
+                      <a href="https://groupcheers.microooo.com/signup" />
+                    }
                   >
                     {tier.cta}
                   </Button>
@@ -552,57 +799,67 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="mt-8 text-center text-sm text-muted-foreground">
+          <p className="mt-12 text-center text-sm text-muted-foreground">
             All plans include a 14-day free trial.{" "}
-            <Link href="/pricing" className="underline underline-offset-4 hover:text-foreground">
-              See full pricing details
+            <Link
+              href="/pricing"
+              className="underline underline-offset-4 hover:text-foreground font-medium"
+            >
+              View full pricing details
             </Link>
           </p>
         </div>
       </section>
 
       {/* ================================================================ */}
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS                                                     */}
       {/* ================================================================ */}
-      <section className="border-b bg-muted/30">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
+      <section className="border-b">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
               Testimonials
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Loved by Builders
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Teams and founders around the world use microooo to simplify
-              their stack.
+              their stack and ship faster.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
             {testimonials.map((t) => (
-              <Card key={t.name} className="flex flex-col border border-border">
-                <CardContent className="flex-1 pt-2">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
+              <Card
+                key={t.name}
+                className="flex flex-col border border-border"
+              >
+                <CardContent className="flex-1 pt-8 pb-6">
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-6">
+                    {[...Array(t.stars)].map((_, i) => (
                       <Star
                         key={i}
-                        className="size-4 fill-amber-400 text-amber-400"
+                        className="size-5 fill-amber-400 text-amber-400"
                       />
                     ))}
                   </div>
-                  <blockquote className="text-sm leading-relaxed">
+                  <blockquote className="text-base leading-relaxed">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
                 </CardContent>
-                <CardFooter>
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center size-9 rounded-full bg-muted text-xs font-semibold">
+                <Separator />
+                <CardFooter className="pt-6">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center size-11 rounded-full bg-muted border border-border text-sm font-bold">
                       {t.avatar}
                     </div>
                     <div>
-                      <p className="text-sm font-medium">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.role}</p>
+                      <p className="text-sm font-semibold">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {t.role}
+                      </p>
                     </div>
                   </div>
                 </CardFooter>
@@ -613,118 +870,230 @@ export default function Home() {
       </section>
 
       {/* ================================================================ */}
-      {/* FAQ */}
+      {/* BLOG PREVIEW                                                     */}
       {/* ================================================================ */}
-      <section className="border-b">
-        <div className="mx-auto max-w-3xl px-6 py-24">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">
-              FAQ
+      <section className="border-b bg-muted/30">
+        <div className="mx-auto max-w-7xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
+              Blog
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Frequently Asked Questions
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              From the Blog
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Everything you need to know about microooo.
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Insights, tutorials, and behind-the-scenes stories from the
+              microooo team.
             </p>
           </div>
 
-          <Accordion className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={String(index)}>
-                <AccordionTrigger className="text-base font-medium py-4">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
+          <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+            {blogPosts.map((post) => (
+              <a
+                key={post.title}
+                href="#"
+                className="group"
+              >
+                <Card className="h-full border border-border transition-colors group-hover:bg-muted/50">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Badge variant="outline" className="text-[10px] uppercase tracking-wider">
+                        {post.category}
+                      </Badge>
+                      <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <CalendarDays className="size-3" />
+                        {post.date}
+                      </span>
+                    </div>
+                    <CardTitle className="text-lg leading-snug group-hover:underline underline-offset-4">
+                      {post.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold">
+                      Read more
+                      <ArrowRight className="size-3.5" />
+                    </span>
+                  </CardContent>
+                </Card>
+              </a>
             ))}
-          </Accordion>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-11 px-8 text-sm font-semibold"
+              render={<a href="#" />}
+            >
+              <BookOpen className="mr-2 size-4" />
+              View All Posts
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* ================================================================ */}
-      {/* FINAL CTA */}
+      {/* FAQ                                                              */}
       {/* ================================================================ */}
       <section className="border-b">
-        <div className="mx-auto max-w-6xl px-6 py-28 text-center">
-          <Globe className="mx-auto size-12 text-muted-foreground mb-6" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl mx-auto">
+        <div className="mx-auto max-w-3xl px-6 py-28">
+          <div className="text-center mb-20">
+            <Badge variant="secondary" className="mb-4 text-xs uppercase tracking-wider">
+              FAQ
+            </Badge>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Everything you need to know about microooo. Can not find the
+              answer you are looking for? Reach out to our support team.
+            </p>
+          </div>
+
+          <div className="space-y-0 divide-y divide-border border-t border-b border-border">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={index}>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenFaq(isOpen ? null : index)
+                    }
+                    className="flex w-full items-center justify-between gap-4 py-6 text-left"
+                  >
+                    <span className="text-base font-semibold leading-snug pr-4">
+                      {faq.question}
+                    </span>
+                    <div
+                      className={`flex items-center justify-center size-8 rounded-lg border border-border shrink-0 transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      <ChevronDown className="size-4" />
+                    </div>
+                  </button>
+                  {isOpen && (
+                    <div className="pb-6 pr-12">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* FINAL CTA                                                        */}
+      {/* ================================================================ */}
+      <section className="border-b relative overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-muted/60 via-background to-background" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-32 md:py-40 text-center">
+          <div className="flex items-center justify-center size-20 rounded-full border-2 border-border bg-background mx-auto mb-10">
+            <Globe className="size-9 text-foreground" />
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight max-w-3xl mx-auto leading-[1.1]">
             Ready to simplify your stack?
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Join thousands of teams who ditched their bloated toolchain for one
-            clean, powerful platform. Start your free trial today.
+
+          <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Join thousands of teams who ditched their bloated toolchain for
+            one clean, powerful platform. Start your free trial today and
+            see the difference in minutes.
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="h-12 px-8 text-base" render={<Link href="/signup" />}>
+
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="h-14 px-12 text-base font-semibold"
+              render={
+                <a href="https://groupcheers.microooo.com/signup" />
+              }
+            >
               Get Started Free
-              <ArrowRight className="ml-2 size-4" />
+              <ArrowRight className="ml-2 size-5" />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="h-12 px-8 text-base"
+              className="h-14 px-12 text-base font-semibold"
               render={<Link href="/pricing" />}
             >
               View Pricing
             </Button>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            No credit card required. Cancel anytime.
+
+          <p className="mt-6 text-sm text-muted-foreground">
+            No credit card required. Cancel anytime. 30-day money-back
+            guarantee.
           </p>
         </div>
       </section>
 
       {/* ================================================================ */}
-      {/* FOOTER */}
+      {/* FOOTER                                                           */}
       {/* ================================================================ */}
       <footer className="border-t">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-4">
             <div>
-              <p className="text-lg font-bold tracking-tight">microooo</p>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                15 micro-SaaS tools bundled into one simple subscription. Built
-                for makers, founders, and growing teams.
+              <p className="text-2xl font-bold tracking-tight">microooo</p>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                15 micro-SaaS tools bundled into one simple subscription.
+                Built for makers, founders, and growing teams who refuse to
+                overpay for software.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold mb-4">Products</p>
-              <ul className="space-y-2">
-                {mainProducts.slice(0, 5).map((p) => (
+              <p className="text-sm font-semibold mb-5">Products</p>
+              <ul className="space-y-3">
+                {mainProducts.map((p) => (
                   <li key={p.id}>
-                    <Link
+                    <a
                       href={p.appUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {p.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p className="text-sm font-semibold mb-4">Micro Tools</p>
-              <ul className="space-y-2">
+              <p className="text-sm font-semibold mb-5">Micro Tools</p>
+              <ul className="space-y-3">
                 {microTools.slice(0, 5).map((p) => (
                   <li key={p.id}>
-                    <Link
+                    <a
                       href={p.appUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {p.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <p className="text-sm font-semibold mb-4">Company</p>
-              <ul className="space-y-2">
+              <p className="text-sm font-semibold mb-5">Company</p>
+              <ul className="space-y-3">
                 <li>
                   <Link
                     href="/pricing"
@@ -742,12 +1111,12 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/blog"
+                  <a
+                    href="#"
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     Blog
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <Link
@@ -761,13 +1130,14 @@ export default function Home() {
             </div>
           </div>
 
-          <Separator className="my-10" />
+          <Separator className="my-12" />
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} microooo. All rights reserved.
+              &copy; {new Date().getFullYear()} microooo. All rights
+              reserved.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8">
               <Link
                 href="/privacy"
                 className="text-xs text-muted-foreground hover:text-foreground transition-colors"

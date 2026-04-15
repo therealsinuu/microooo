@@ -5,7 +5,7 @@ import { Mail } from "lucide-react";
 const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "#blog" },
   { label: "Careers", href: "/careers" },
 ];
 
@@ -74,12 +74,12 @@ export function Footer() {
             <ul className="mt-3 space-y-2">
               {products.map((product) => (
                 <li key={product.id}>
-                  <Link
+                  <a
                     href={product.appUrl}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {product.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -147,10 +147,16 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 border-t pt-8">
-          <p className="text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t pt-8 flex items-center justify-between">
+          <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} microooo. All rights reserved.
           </p>
+          <a
+            href="#"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Back to top &uarr;
+          </a>
         </div>
       </div>
     </footer>
