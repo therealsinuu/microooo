@@ -71,14 +71,13 @@ export default async function ProductPage({
               Product
             </Badge>
 
-            <div
-              className={cn(
-                "mb-8 flex h-24 w-24 items-center justify-center rounded-2xl text-5xl",
-                product.bgColor
-              )}
-            >
-              {product.icon}
-            </div>
+            {product.logo ? (
+              <img src={product.logo} alt={product.name} className="mb-8 h-24 w-24 rounded-2xl" />
+            ) : (
+              <div className={cn("mb-8 flex h-24 w-24 items-center justify-center rounded-2xl text-5xl", product.bgColor)}>
+                {product.icon}
+              </div>
+            )}
 
             <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl lg:text-6xl">
               {product.name}
@@ -308,14 +307,13 @@ export default async function ProductPage({
       <section className="border-b">
         <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
           <div className="flex flex-col items-center text-center">
-            <div
-              className={cn(
-                "mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-3xl",
-                product.bgColor
-              )}
-            >
-              {product.icon}
-            </div>
+            {product.logo ? (
+              <img src={product.logo} alt={product.name} className="mb-6 h-16 w-16 rounded-2xl" />
+            ) : (
+              <div className={cn("mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-3xl", product.bgColor)}>
+                {product.icon}
+              </div>
+            )}
 
             <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
               Ready to try {product.name}?

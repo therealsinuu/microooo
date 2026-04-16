@@ -29,14 +29,13 @@ function ProductCard({
       <Card className="h-full border border-zinc-200 transition-colors group-hover:border-zinc-400 dark:border-zinc-800 dark:group-hover:border-zinc-600">
         <CardHeader>
           <div className="flex items-start justify-between">
-            <div
-              className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-xl text-2xl",
-                product.bgColor
-              )}
-            >
-              {product.icon}
-            </div>
+            {product.logo ? (
+              <img src={product.logo} alt={product.name} className="h-12 w-12 rounded-xl" />
+            ) : (
+              <div className={cn("flex h-12 w-12 items-center justify-center rounded-xl text-2xl", product.bgColor)}>
+                {product.icon}
+              </div>
+            )}
             <ArrowRight className="size-4 text-zinc-400 opacity-0 transition-opacity group-hover:opacity-100" />
           </div>
           <CardTitle className="mt-3 text-base font-semibold text-zinc-900 dark:text-zinc-50">

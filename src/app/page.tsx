@@ -228,8 +228,8 @@ export default function Home() {
               <Card key={product.id}>
                 <CardHeader>
                   <div className="flex items-start gap-3">
-                    <span className={`flex items-center justify-center size-12 rounded-xl text-2xl ${product.bgColor} shrink-0`}>
-                      {product.icon}
+                    <span className={`flex items-center justify-center size-12 rounded-xl text-2xl shrink-0`}>
+                      {product.logo ? <img src={product.logo} alt={product.name} className="size-12 rounded-xl" /> : <span className={product.bgColor + " size-12 rounded-xl flex items-center justify-center"}>{product.icon}</span>}
                     </span>
                     <div className="flex-1 min-w-0">
                       <CardTitle className="text-lg">{product.name}</CardTitle>

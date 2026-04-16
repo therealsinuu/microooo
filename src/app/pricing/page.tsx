@@ -51,11 +51,13 @@ export default function PricingPage() {
               <Card className="h-full border border-border transition-colors group-hover:border-foreground/30">
                 <CardHeader>
                   <div className="flex items-start justify-between">
-                    <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-xl text-2xl ${product.bgColor}`}
-                    >
-                      {product.icon}
-                    </div>
+                    {product.logo ? (
+                      <img src={product.logo} alt={product.name} className="h-12 w-12 rounded-xl" />
+                    ) : (
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl text-2xl ${product.bgColor}`}>
+                        {product.icon}
+                      </div>
+                    )}
                     <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                   </div>
                   <CardTitle className="mt-3 text-base font-semibold">

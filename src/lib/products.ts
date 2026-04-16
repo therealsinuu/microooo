@@ -7,6 +7,7 @@ export interface Product {
   color: string;
   bgColor: string;
   icon: string;
+  logo?: string;
   features: string[];
   useCases: string[];
   howItWorks: string[];
@@ -17,6 +18,7 @@ export const products: Product[] = [
   {
     id: "groupcheers",
     name: "GroupCheers",
+    logo: "/logo-groupcheers.svg",
     tagline: "Celebrate together, beautifully.",
     description:
       "Create stunning group greeting cards for birthdays, farewells, work anniversaries, and every celebration. Invite your team to sign, add GIFs, photos, and heartfelt messages — then deliver a beautiful digital card that feels personal.",
@@ -53,6 +55,7 @@ export const products: Product[] = [
   {
     id: "echoboard",
     name: "EchoBoard",
+    logo: "/logo-echoboard.svg",
     tagline: "Hear your users. Ship what matters.",
     description:
       "A complete feedback management suite. Collect feature requests, build a public roadmap, and publish changelogs — all in one place. Let your users vote on what matters most so you ship the right things.",
@@ -89,6 +92,7 @@ export const products: Product[] = [
   {
     id: "socialpull",
     name: "SocialPull",
+    logo: "/logo-socialpull.svg",
     tagline: "All your social feeds. One beautiful wall.",
     description:
       "Aggregate content from Instagram, Twitter, YouTube, TikTok, and more into a single, embeddable social wall. Perfect for websites, events, and digital displays. Moderate content before it goes live.",
@@ -123,8 +127,9 @@ export const products: Product[] = [
     appUrl: "https://socialpull.microooo.com",
   },
   {
-    id: "firststep",
-    name: "FirstStep",
+    id: "stepwise",
+    name: "StepWise",
+    logo: "/logo-stepwise.svg",
     tagline: "Onboard users like a pro.",
     description:
       "Build interactive product tours, tooltips, and onboarding checklists without writing code. Guide new users through your app step-by-step and boost activation rates. No SDK required — just paste a script tag.",
@@ -156,11 +161,12 @@ export const products: Product[] = [
       "Set triggers — who sees it and when",
       "Launch and measure — track completion and drop-off",
     ],
-    appUrl: "https://firststep.microooo.com",
+    appUrl: "https://stepwise.microooo.com",
   },
   {
     id: "screencast",
     name: "ScreenCast",
+    logo: "/logo-screencast.svg",
     tagline: "Digital signage, simplified.",
     description:
       "Turn any screen into a dynamic digital display. Push content to TVs, monitors, and kiosks from your dashboard. Schedule playlists, show live data, and manage screens across locations — all from one place.",
