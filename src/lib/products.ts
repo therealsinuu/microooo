@@ -23,8 +23,8 @@ export const products: Product[] = [
     description:
       "Create stunning group greeting cards for birthdays, farewells, work anniversaries, and every celebration. Invite your team to sign, add GIFs, photos, and heartfelt messages — then deliver a beautiful digital card that feels personal.",
     category: "product",
-    color: "text-purple-600",
-    bgColor: "bg-purple-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "🎉",
     features: [
       "Beautiful card templates for every occasion",
@@ -60,8 +60,8 @@ export const products: Product[] = [
     description:
       "A complete feedback management suite. Collect feature requests, build a public roadmap, and publish changelogs — all in one place. Let your users vote on what matters most so you ship the right things.",
     category: "product",
-    color: "text-blue-600",
-    bgColor: "bg-blue-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "💬",
     features: [
       "Public feature request boards",
@@ -97,8 +97,8 @@ export const products: Product[] = [
     description:
       "Aggregate content from Instagram, Twitter, YouTube, TikTok, and more into a single, embeddable social wall. Perfect for websites, events, and digital displays. Moderate content before it goes live.",
     category: "product",
-    color: "text-purple-600",
-    bgColor: "bg-purple-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "📱",
     features: [
       "Pull from 10+ social platforms",
@@ -134,8 +134,8 @@ export const products: Product[] = [
     description:
       "Build interactive product tours, tooltips, and onboarding checklists without writing code. Guide new users through your app step-by-step and boost activation rates. No SDK required — just paste a script tag.",
     category: "product",
-    color: "text-green-600",
-    bgColor: "bg-green-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "🚀",
     features: [
       "Drag-and-drop tour builder",
@@ -171,7 +171,7 @@ export const products: Product[] = [
     description:
       "Turn any screen into a dynamic digital display. Push content to TVs, monitors, and kiosks from your dashboard. Schedule playlists, show live data, and manage screens across locations — all from one place.",
     category: "product",
-    color: "text-orange-600",
+    color: "text-orange-700",
     bgColor: "bg-orange-500/10",
     icon: "🖥️",
     features: [
@@ -207,8 +207,8 @@ export const products: Product[] = [
     description:
       "Generate stunning Open Graph images for your website, blog posts, and social shares automatically. Pick a template, connect your content, and every page gets a perfect preview image when shared on social media.",
     category: "hidden",
-    color: "text-indigo-600",
-    bgColor: "bg-indigo-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "🖼️",
     features: [
       "50+ professionally designed templates",
@@ -243,8 +243,8 @@ export const products: Product[] = [
     description:
       "Generate professional privacy policies, terms of service, cookie policies, and GDPR compliance pages for your website. Answer a few questions and get legally-sound pages ready to publish. Stay compliant without hiring a lawyer.",
     category: "hidden",
-    color: "text-amber-600",
-    bgColor: "bg-amber-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "⚖️",
     features: [
       "Privacy Policy generator",
@@ -279,8 +279,8 @@ export const products: Product[] = [
     description:
       "A powerful screenshot API that captures any webpage as a high-quality image. Perfect for generating thumbnails, building preview cards, monitoring visual changes, and automating screenshot workflows.",
     category: "hidden",
-    color: "text-cyan-600",
-    bgColor: "bg-cyan-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "📸",
     features: [
       "Full-page and viewport screenshots",
@@ -315,8 +315,8 @@ export const products: Product[] = [
     description:
       "Add eye-catching announcement bars to your website in seconds. Promote sales, announce features, share news, or collect emails — with beautiful, customizable bars that grab attention without being annoying.",
     category: "product",
-    color: "text-red-600",
-    bgColor: "bg-red-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "📢",
     features: [
       "Drag-and-drop bar designer",
@@ -351,8 +351,8 @@ export const products: Product[] = [
     description:
       "Create beautiful, consistent email signatures for your entire team. Design once, deploy everywhere. Works with Gmail, Outlook, Apple Mail, and more. Include social links, banners, and call-to-action buttons.",
     category: "hidden",
-    color: "text-violet-600",
-    bgColor: "bg-violet-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "✉️",
     features: [
       "Visual signature designer",
@@ -387,8 +387,8 @@ export const products: Product[] = [
     description:
       "Monitor your website's uptime and display beautiful status badges on your site. Show visitors your reliability with real-time uptime percentages, response times, and incident history. Build trust through transparency.",
     category: "hidden",
-    color: "text-emerald-600",
-    bgColor: "bg-emerald-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "🟢",
     features: [
       "60-second monitoring intervals",
@@ -423,8 +423,8 @@ export const products: Product[] = [
     description:
       "Generate all the favicon sizes and formats you need from a single image. Get ICO, PNG, SVG, Apple Touch Icon, and web manifest files — everything your site needs to look perfect in every browser and device.",
     category: "hidden",
-    color: "text-sky-600",
-    bgColor: "bg-sky-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "🎯",
     features: [
       "Generate all favicon sizes from one image",
@@ -459,8 +459,8 @@ export const products: Product[] = [
     description:
       "Create and manage URL redirects without touching your server config. Perfect for marketing campaigns, link shortening, A/B testing landing pages, and managing URL migrations. Real-time analytics on every redirect.",
     category: "product",
-    color: "text-teal-600",
-    bgColor: "bg-teal-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "🔗",
     features: [
       "Instant redirect creation",
@@ -495,8 +495,8 @@ export const products: Product[] = [
     description:
       "Build beautiful, high-converting pricing pages without design skills. Choose from proven templates, customize your plans, and embed on your site. A/B test different layouts and pricing strategies to maximize conversions.",
     category: "hidden",
-    color: "text-lime-600",
-    bgColor: "bg-lime-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "💰",
     features: [
       "Proven high-converting templates",
@@ -531,8 +531,8 @@ export const products: Product[] = [
     description:
       "Create professional maintenance and coming-soon pages that keep your visitors informed and your brand looking good — even when your site is down. Set up automatic scheduling so your maintenance page appears and disappears on time.",
     category: "hidden",
-    color: "text-stone-600",
-    bgColor: "bg-stone-500/10",
+    color: "text-orange-700",
+    bgColor: "bg-orange-500/10",
     icon: "⏸️",
     features: [
       "Beautiful maintenance page templates",
