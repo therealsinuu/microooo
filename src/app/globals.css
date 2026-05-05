@@ -7,10 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, monospace;
-  --font-serif: var(--font-serif), "Instrument Serif", "Times New Roman", serif;
-  --font-heading: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+  --font-heading: var(--font-sans), "Inter", ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,75 +48,73 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Editorial — warm paper palette with ORANGE primary (light) */
 :root {
-  --background: hsl(40 35% 96%);
-  --foreground: hsl(30 8% 12%);
-  --card: hsl(40 35% 98%);
-  --card-foreground: hsl(30 8% 12%);
-  --popover: hsl(40 35% 98%);
-  --popover-foreground: hsl(30 8% 12%);
-  --primary: hsl(20 88% 52%);
-  --primary-foreground: hsl(40 40% 98%);
-  --secondary: hsl(40 22% 92%);
-  --secondary-foreground: hsl(30 8% 18%);
-  --muted: hsl(40 22% 92%);
-  --muted-foreground: hsl(35 7% 38%);
-  --accent: hsl(20 88% 52%);
-  --accent-foreground: hsl(40 40% 98%);
-  --destructive: hsl(0 70% 45%);
-  --border: hsl(35 18% 80%);
-  --input: hsl(35 18% 80%);
-  --ring: hsl(20 88% 52%);
-  --chart-1: hsl(20 88% 52%);
-  --chart-2: hsl(20 70% 65%);
-  --chart-3: hsl(20 60% 75%);
-  --chart-4: hsl(20 40% 85%);
-  --chart-5: hsl(35 18% 82%);
-  --radius: 0.5rem;
-  --sidebar: hsl(40 30% 94%);
-  --sidebar-foreground: hsl(30 8% 12%);
-  --sidebar-primary: hsl(20 88% 52%);
-  --sidebar-primary-foreground: hsl(40 40% 98%);
-  --sidebar-accent: hsl(40 22% 88%);
-  --sidebar-accent-foreground: hsl(30 8% 12%);
-  --sidebar-border: hsl(35 18% 80%);
-  --sidebar-ring: hsl(20 88% 52%);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Editorial — dark with same ORANGE primary */
 .dark {
-  --background: hsl(30 8% 9%);
-  --foreground: hsl(40 25% 92%);
-  --card: hsl(30 8% 12%);
-  --card-foreground: hsl(40 25% 92%);
-  --popover: hsl(30 8% 12%);
-  --popover-foreground: hsl(40 25% 92%);
-  --primary: hsl(20 90% 58%);
-  --primary-foreground: hsl(30 8% 9%);
-  --secondary: hsl(30 8% 16%);
-  --secondary-foreground: hsl(40 25% 92%);
-  --muted: hsl(30 8% 16%);
-  --muted-foreground: hsl(35 12% 62%);
-  --accent: hsl(20 90% 58%);
-  --accent-foreground: hsl(30 8% 9%);
-  --destructive: hsl(0 70% 50%);
-  --border: hsl(30 8% 22%);
-  --input: hsl(30 8% 22%);
-  --ring: hsl(20 90% 58%);
-  --chart-1: hsl(20 90% 58%);
-  --chart-2: hsl(20 70% 65%);
-  --chart-3: hsl(20 50% 50%);
-  --chart-4: hsl(30 8% 30%);
-  --chart-5: hsl(30 8% 20%);
-  --sidebar: hsl(30 8% 12%);
-  --sidebar-foreground: hsl(40 25% 92%);
-  --sidebar-primary: hsl(20 90% 58%);
-  --sidebar-primary-foreground: hsl(30 8% 9%);
-  --sidebar-accent: hsl(30 8% 16%);
-  --sidebar-accent-foreground: hsl(40 25% 92%);
-  --sidebar-border: hsl(30 8% 22%);
-  --sidebar-ring: hsl(20 90% 58%);
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
@@ -126,56 +123,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv01", "cv02", "cv11";
   }
   html {
     @apply font-sans;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-}
-
-@layer utilities {
-  /* Instrument Serif italic — the editorial accent voice */
-  .font-serif-italic {
-    font-family: var(--font-serif), "Instrument Serif", "Times New Roman", serif;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-  }
-
-  /* Plain Instrument Serif (no italic) — for serif numbers, ornaments */
-  .font-serif {
-    font-family: var(--font-serif), "Instrument Serif", "Times New Roman", serif;
-    font-weight: 400;
-  }
-
-  /* Mono editorial label */
-  .label-mono {
-    font-family: var(--font-geist-mono), ui-monospace, monospace;
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  /* Subtle paper grain — barely visible */
-  .bg-paper {
-    background-image:
-      radial-gradient(circle at 25% 20%, hsl(35 30% 90% / 0.7), transparent 55%),
-      radial-gradient(circle at 80% 90%, hsl(20 40% 88% / 0.45), transparent 55%);
-  }
-
-  .mask-fade-bottom {
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  .animate-marquee {
-    animation: marquee 38s linear infinite;
   }
 }

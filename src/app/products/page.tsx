@@ -1,7 +1,17 @@
 import Link from "next/link";
 import { visibleProducts } from "@/lib/products";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "All Products | microooo",
@@ -9,118 +19,117 @@ export const metadata = {
     "Explore standalone micro-SaaS products built to solve real problems. From group greeting cards to uptime badges, find the perfect tool for your workflow.",
 };
 
+function ProductCard({
+  product,
+}: {
+  product: (typeof visibleProducts)[number];
+}) {
+  return (
+    <Link href={product.appUrl} className="group block">
+      <Card className="h-full border border-zinc-200 transition-colors group-hover:border-zinc-400 dark:border-zinc-800 dark:group-hover:border-zinc-600">
+        <CardHeader>
+          <div className="flex items-start justify-between">
+            {product.logo ? (
+              <img src={product.logo} alt={product.name} className="h-12 w-12 rounded-xl" />
+            ) : (
+              <div className={cn("flex h-12 w-12 items-center justify-center rounded-xl text-2xl", product.bgColor)}>
+                {product.icon}
+              </div>
+            )}
+            <ArrowRight className="size-4 text-zinc-400 opacity-0 transition-opacity group-hover:opacity-100" />
+          </div>
+          <CardTitle className="mt-3 text-base font-semibold text-zinc-900 dark:text-zinc-50">
+            {product.name}
+          </CardTitle>
+          <CardDescription className="text-sm text-zinc-500 dark:text-zinc-400">
+            {product.tagline}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="line-clamp-2 text-sm text-zinc-600 dark:text-zinc-400">
+            {product.description}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {product.features.slice(0, 3).map((feature, i) => (
+              <Badge key={i} variant="secondary" className="text-[10px]">
+                {feature.length > 30
+                  ? feature.slice(0, 28) + "..."
+                  : feature}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+}
+
 export default function ProductsPage() {
   return (
-    <>
+    <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Header */}
-      <section className="border-b border-border bg-paper px-4 pt-24 pb-20 md:pt-32">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-12">
-          <div className="md:col-span-7">
-            <p className="label-mono mb-7 text-accent">
-              {visibleProducts.length} products · all standalone
-            </p>
-            <h1
-              className="font-medium leading-[0.95] tracking-[-0.025em]"
-              style={{ fontSize: "clamp(48px, 8vw, 104px)" }}
-            >
-              Everything <span className="font-serif-italic text-foreground/80">we</span>
-              <br />
-              build, in one place.
+      <section className="border-b">
+        <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+          <div className="flex flex-col items-center text-center">
+            <Badge variant="outline" className="mb-4 text-xs uppercase tracking-wider">
+              {visibleProducts.length} Products
+            </Badge>
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
+              Everything we build
             </h1>
+            <p className="mt-4 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
+              Small tools that solve real problems. Each product is designed to
+              do one thing exceptionally well.
+            </p>
           </div>
-          <aside className="border-l border-border pl-6 md:col-span-5 md:pl-10">
-            <p className="label-mono mb-4 text-muted-foreground">The catalog</p>
-            <p className="font-serif-italic text-xl leading-snug text-foreground/85 md:text-2xl">
-              Small tools that solve real problems.
-            </p>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              Each product is designed to do one thing exceptionally well.
-              Browse the index below — every entry has its own site, login,
-              and pricing.
-            </p>
-          </aside>
         </div>
       </section>
 
-      {/* Products index */}
-      <section className="border-b border-border px-4 py-24 md:py-28">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 flex items-end justify-between">
-            <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
-              <span className="font-serif-italic text-foreground/80">The</span> index
+      {/* Products Category */}
+      <section className="border-b">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <div className="flex items-center gap-3">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+              Products
             </h2>
-            <p className="label-mono text-muted-foreground">
-              {visibleProducts.length} entries
-            </p>
+            <Badge variant="secondary" className="text-xs">
+              {visibleProducts.length}
+            </Badge>
           </div>
-          <div className="divide-y divide-border border-y border-border">
-            {visibleProducts.map((product, i) => (
-              <a
-                key={product.id}
-                href={product.appUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group grid grid-cols-12 items-start gap-4 py-8 transition-colors hover:bg-secondary/40"
-              >
-                <span className="col-span-12 font-serif-italic text-2xl text-muted-foreground md:col-span-1 md:text-3xl">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="col-span-12 flex items-center gap-3 md:col-span-3">
-                  {product.logo ? (
-                    <img
-                      src={product.logo}
-                      alt={product.name}
-                      className="size-11 rounded-lg ring-1 ring-border"
-                    />
-                  ) : (
-                    <div className={`flex size-11 items-center justify-center rounded-lg text-2xl ring-1 ring-border ${product.bgColor}`}>
-                      {product.icon}
-                    </div>
-                  )}
-                  <h3 className="text-xl font-medium tracking-tight md:text-2xl">
-                    {product.name}
-                  </h3>
-                </div>
-                <div className="col-span-12 md:col-span-7">
-                  <p className="text-sm font-medium text-foreground md:text-base">
-                    {product.tagline}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
-                    {product.description}
-                  </p>
-                </div>
-                <ArrowUpRight className="col-span-12 ml-auto size-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground md:col-span-1 md:mt-2" />
-              </a>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Full-featured tools for teams and businesses.
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-paper px-4 py-24 md:py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="label-mono mb-6 text-accent">Don&apos;t see it?</p>
-          <h2
-            className="font-medium leading-[0.95] tracking-[-0.025em]"
-            style={{ fontSize: "clamp(36px, 5.5vw, 64px)" }}
-          >
-            Can&apos;t find{" "}
-            <span className="font-serif-italic text-foreground/80">what you need?</span>
+      <section>
+        <div className="mx-auto max-w-6xl px-6 py-20 text-center">
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+            Can&apos;t find what you need?
           </h2>
-          <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            We&apos;re always building new tools. Let us know what you&apos;d
-            love to see next.
+          <p className="mt-3 text-zinc-600 dark:text-zinc-400">
+            We&apos;re always building new tools. Let us know what you&apos;d love to see.
           </p>
-          <Button
-            size="lg"
-            variant="outline"
-            className="mt-10 h-11 rounded-full px-5 text-sm"
-            render={<Link href="/" />}
-          >
-            Back to home
-          </Button>
+          <div className="mt-8">
+            <Link
+              href="/"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-11 px-6 text-sm"
+              )}
+            >
+              Back to Home
+            </Link>
+          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

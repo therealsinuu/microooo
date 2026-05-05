@@ -15,7 +15,7 @@ const companySections = [
     links: [
       { label: "About", href: "/about" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Journal", href: "#blog" },
+      { label: "Blog", href: "#blog" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -30,68 +30,53 @@ const companySections = [
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-foreground bg-paper">
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-12">
+    <footer className="border-t bg-muted/20">
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-5">
-            <Link href="/" className="flex items-baseline gap-1.5 text-base">
-              <span className="font-medium tracking-tight">microooo</span>
-              <span className="font-serif-italic text-muted-foreground">— a small studio</span>
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <span className="font-bold">microooo</span>
             </Link>
-            <p className="mt-5 max-w-sm font-serif-italic text-lg leading-snug text-foreground/80">
-              A collection of standalone micro‑SaaS products. Built with care
-              by an indie maker who believes software should be calm, focused,
-              and priced fairly.
-            </p>
-            <p className="mt-4 text-sm text-muted-foreground">
-              — Sinan, est. 2024
+            <p className="text-sm text-muted-foreground">
+              A collection of standalone micro-SaaS products. Built by Sinan.
             </p>
           </div>
 
           {/* Link sections */}
-          <div className="col-span-2 grid grid-cols-3 gap-8 md:col-span-7">
-            {companySections.map((section) => (
-              <div key={section.title}>
-                <h4 className="label-mono mb-5 text-accent">
-                  {section.title}
-                </h4>
-                <ul className="space-y-3">
-                  {section.links.map((link) => (
-                    <li key={link.label}>
-                      {"external" in link && link.external ? (
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-foreground/80 transition-colors hover:text-foreground"
-                        >
-                          {link.label}
-                        </a>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className="text-sm text-foreground/80 transition-colors hover:text-foreground"
-                        >
-                          {link.label}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {companySections.map((section) => (
+            <div key={section.title}>
+              <h4 className="font-semibold text-sm mb-3">{section.title}</h4>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    {"external" in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-3 border-t border-border pt-7 text-sm text-muted-foreground md:flex-row md:items-center">
-          <p>
-            &copy; {new Date().getFullYear()} microooo.{" "}
-            <span className="font-serif-italic">All rights reserved.</span>
-          </p>
-          <p className="font-serif-italic">
-            Made for makers, founders & growing teams.
-          </p>
+        <div className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} microooo. All rights reserved.</p>
+          <p>Built by Sinan for makers, founders, and growing teams.</p>
         </div>
       </div>
     </footer>
